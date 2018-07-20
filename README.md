@@ -55,25 +55,31 @@ make[1]: *** [Makefile:413: all-recursive] 오류 1
 make[1]: 디렉터리 '/home/hk/whisper/nstore' 나감
 make: *** [Makefile:345: all] 오류 2
 
-## echo : error
+## echo : too much warning, but completed.
 
-error message : too many error messages.
+## redis : too much warning, but completed.
 
-## redis : error
+## ctree : completed, but strange(just going in and out the directories.)
 
-error message : too many error messages.
-
-## ctree : error
-
-error message : too many error messages.
-
-## hashmap : error
-
-error message : too many error messages.
+## hashmap : completed, but strange(just going in and out the directories.)
 
 ## memcached : error
 
-error message : many error messages.
+[hk@mangalyaan whisper]$ ./script.py -b -w 'memcached'
+
+\>>> scons --build-bench=memcached --config-ftrace
+
+scons: Reading SConscript files ...
+scons: done reading SConscript files.
+scons: Building targets ...
+(COMPILE)  build/bench/memcached/memcached-1.2.4-mtm/assoc.c
+In file included from build/bench/memcached/memcached-1.2.4-mtm/assoc.c:22:
+bench/memcached/memcached-1.2.4-mtm/memcached.h:12:10: fatal error: event.h: No such file or directory
+ #include <event.h>
+          ^~~~~~~~~
+compilation terminated.
+scons: *** [build/bench/memcached/memcached-1.2.4-mtm/assoc.o] Error 1
+scons: building terminated because of errors.
 
 ## vacation : error
 
