@@ -1,4 +1,5 @@
 whiper applications : ycsb,tpcc,echo,redis,ctree,hashmap,memcached,vacation,nfs,exim,sql
+This is really beginning version. I will update gradually.
 
 # 1. whisper Download
 ===========================================================================
