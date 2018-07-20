@@ -37,8 +37,6 @@ error message :
 
 [hk@mangalyaan whisper]$ ./script.py -b -w 'tpcc'
 
->>> make
-
 make  all-recursive
 make[1]: 디렉터리 '/home/hk/whisper/nstore' 들어감
 Making all in src
