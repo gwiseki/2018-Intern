@@ -94,13 +94,13 @@ compilation terminated.
 scons: *** [build/library/mtm/src/config.os] Error 1
 scons: building terminated because of errors.
 
-## nfs, exim, sql : error
+## nfs, exim, sql, vacation : error
 
 error message : please visit github.com/snalli/PMFS-new
 
 # 3. Run whisper applications
 ===========================================================================
-## ycsb, tpcc : No such file or directory
+## ycsb, tpcc, ctree, hashmap, memcached : No such file or directory
 
 ## echo
 
@@ -114,40 +114,7 @@ Unable to allocate memory pool
 
 ## redis : executed well.
 
-## ctree : 
-
-## hashmap : completed, but strange(just going in and out the directories.)
-
-## memcached : error
-
-[hk@mangalyaan whisper]$ ./script.py -b -w 'memcached'
-
-\>>> scons --build-bench=memcached --config-ftrace
-
-scons: Reading SConscript files ...
-scons: done reading SConscript files.
-scons: Building targets ...
-(COMPILE)  build/bench/memcached/memcached-1.2.4-mtm/assoc.c
-In file included from build/bench/memcached/memcached-1.2.4-mtm/assoc.c:22:
-bench/memcached/memcached-1.2.4-mtm/memcached.h:12:10: fatal error: event.h: No such file or directory
- #include <event.h>
-          ^~~~~~~~~
-compilation terminated.
-scons: *** [build/bench/memcached/memcached-1.2.4-mtm/assoc.o] Error 1
-scons: building terminated because of errors.
-
-## vacation : error
-
-error message : 
-
-In file included from build/library/mtm/include/config.h:36,
-                 from build/library/mtm/src/config.c:35:
-library/common/config_generic.h:37:10: fatal error: libconfig.h: No such file or directory
- #include <libconfig.h>
-          ^~~~~~~~~~~~~
-compilation terminated.
-scons: *** [build/library/mtm/src/config.os] Error 1
-scons: building terminated because of errors.
+will analyze.
 
 ## nfs, exim, sql : error
 
