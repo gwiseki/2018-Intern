@@ -1,14 +1,14 @@
 whiper applications : ycsb,tpcc,echo,redis,ctree,hashmap,memcached,vacation,nfs,exim,sql
 
-## 1. whisper Download
+# 1. whisper Download
 ===========================================================================
 git clone --recursive https://github.com/swapnilh/whisper.git
 
 -> successful
 
-## 2. build whisper applications
+# 2. build whisper applications
 ===========================================================================
-# ycsb : error
+## ycsb : error
 
 error message : 
 
@@ -32,5 +32,5 @@ make[1]: *** [Makefile:413: all-recursive] 오류 1
 make[1]: 디렉터리 '/home/hk/whisper/nstore' 나감
 make: *** [Makefile:345: all] 오류 2
 
-# tpcc :
+## tpcc :
 
