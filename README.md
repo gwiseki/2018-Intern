@@ -35,7 +35,7 @@ make: *** [Makefile:345: all] 오류 2
 
 error message :
 
-[hk@mangalyaan whisper]$ ./script.py -b -w 'tpcc'
+[whisper]$ ./script.py -b -w 'tpcc'
 
 make  all-recursive
 make[1]: 디렉터리 '/home/hk/whisper/nstore' 들어감
@@ -65,7 +65,7 @@ make: *** [Makefile:345: all] 오류 2
 
 ## memcached : error
 
-[hk@mangalyaan whisper]$ ./script.py -b -w 'memcached'
+[whisper]$ ./script.py -b -w 'memcached'
 
 \>>> scons --build-bench=memcached --config-ftrace
 
@@ -104,7 +104,7 @@ error message : please visit github.com/snalli/PMFS-new
 
 ## echo
 
-[hk@mangalyaan whisper]$ ./script.py -r -z 'small' -w 'echo'
+[whisper]$ ./script.py -r -z 'small' -w 'echo'
 
 \>>> ./run.sh --small
 
