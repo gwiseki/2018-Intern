@@ -65,6 +65,8 @@ make: *** [Makefile:345: all] 오류 2
 
 ## memcached : error
 
+error message :
+
 [whisper]$ ./script.py -b -w 'memcached'
 
 \>>> scons --build-bench=memcached --config-ftrace
@@ -94,7 +96,7 @@ compilation terminated.
 scons: *** [build/library/mtm/src/config.os] Error 1
 scons: building terminated because of errors.
 
-## nfs, exim, sql, vacation : error
+## nfs, exim, sql: error
 
 error message : please visit github.com/snalli/PMFS-new
 
