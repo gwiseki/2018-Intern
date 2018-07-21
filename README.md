@@ -1,5 +1,6 @@
-whiper applications : ycsb,tpcc,echo,redis,ctree,hashmap,memcached,vacation,nfs,exim,sql
-This is really beginning version. I will update gradually.
+whiper applications : ycsb,tpcc,echo,redis,ctree,hashmap,memcached,vacation,nfs,exim,sql <br/>
+This is really beginning version. I will update gradually.<br/>
+And on same machine, the result can be different.
 
 # 1. whisper Download
 ===========================================================================
@@ -114,10 +115,37 @@ Unable to allocate memory pool
 0.00user 0.00system 0:00.03elapsed 58%CPU (0avgtext+0avgdata 4496maxresident)k
 0inputs+0outputs (0major+337minor)pagefaults 0swaps
 
-## redis : executed well.
-
-will analyze.
-
 ## nfs, exim, sql : error
 
 error message : please visit github.com/snalli/PMFS-new
+
+## redis : executed well.
+
+----------------------------------------------------------
+[whisper]$ ./script.py -r -z 'small' -w 'redis'
+
+>>> ./run-redis-server.sh
+
+failed to enable tracing. err = -1
+41188:C 21 Jul 15:26:20.064 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
+41188:C 21 Jul 15:26:20.064 # Cannot int persistent memory file /dev/shm/redis.pm size 2.00G
+
+>>> starting redis client
+
+
+>>> ./run-redis-cli.sh --small
+
+63250 Gets/sec | Hits: 63250 (100.00%) | Misses: 0 (0.00%)
+63250 Gets/sec | Hits: 63250 (100.00%) | Misses: 0 (0.00%)
+61000 Gets/sec | Hits: 61000 (100.00%) | Misses: 0 (0.00%)
+....(repetition)
+....
+\>>> kill -s SIGKILL `pgrep redis`
+
+sh: line 0: kill: SIGKILL: invalid signal specification
+[whisper]$
+
+----------------------------------------------------------
+
+
+
