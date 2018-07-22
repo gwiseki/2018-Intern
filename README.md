@@ -14,10 +14,12 @@ git clone --recursive https://github.com/swapnilh/whisper.git
 
 error message : 
 
+>>> make
+
 make  all-recursive
-make[1]: 디렉터리 '/home/hk/whisper/nstore' 들어감
+make[1]: Entering directory '/home/hk/whisper/nstore'
 Making all in src
-make[2]: 디렉터리 '/home/hk/whisper/nstore/src' 들어감
+make[2]: Entering directory '/home/hk/whisper/nstore/src'
 g++ -DHAVE_CONFIG_H -I. -I..  -I./common -Wno-pointer-arith   -Wall -Wextra -Werror  -ggdb -O3 -D_ENABLE_FTRACE -MT libpm.o -MD -MP -MF .deps/libpm.Tpo -c -o libpm.o libpm.cpp
 libpm.cpp:9:31: error: dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
  void* operator new(size_t sz) throw (std::bad_alloc) {
@@ -26,11 +28,11 @@ libpm.cpp:37:38: error: dynamic exception specifications are deprecated in C++11
  void *operator new[](std::size_t sz) throw (std::bad_alloc) {
                                       ^~~~~
 cc1plus: all warnings being treated as errors
-make[2]: *** [Makefile:466: libpm.o] 오류 1
-make[2]: 디렉터리 '/home/hk/whisper/nstore/src' 나감
-make[1]: *** [Makefile:413: all-recursive] 오류 1
-make[1]: 디렉터리 '/home/hk/whisper/nstore' 나감
-make: *** [Makefile:345: all] 오류 2
+make[2]: *** [Makefile:466: libpm.o] Error 1
+make[2]: Leaving directory '/home/hk/whisper/nstore/src'
+make[1]: *** [Makefile:413: all-recursive] Error 1
+make[1]: Leaving directory '/home/hk/whisper/nstore'
+make: *** [Makefile:345: all] Error 2
 
 ## tpcc : error
 
@@ -38,10 +40,12 @@ error message :
 
 [whisper]$ ./script.py -b -w 'tpcc'
 
+>>> make
+
 make  all-recursive
-make[1]: 디렉터리 '/home/hk/whisper/nstore' 들어감
+make[1]: Entering directory '/home/hk/whisper/nstore'
 Making all in src
-make[2]: 디렉터리 '/home/hk/whisper/nstore/src' 들어감
+make[2]: Entering directory '/home/hk/whisper/nstore/src'
 g++ -DHAVE_CONFIG_H -I. -I..  -I./common -Wno-pointer-arith   -Wall -Wextra -Werror  -ggdb -O3 -D_ENABLE_FTRACE -MT libpm.o -MD -MP -MF .deps/libpm.Tpo -c -o libpm.o libpm.cpp
 libpm.cpp:9:31: error: dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
  void* operator new(size_t sz) throw (std::bad_alloc) {
@@ -50,15 +54,16 @@ libpm.cpp:37:38: error: dynamic exception specifications are deprecated in C++11
  void *operator new[](std::size_t sz) throw (std::bad_alloc) {
                                       ^~~~~
 cc1plus: all warnings being treated as errors
-make[2]: *** [Makefile:466: libpm.o] 오류 1
-make[2]: 디렉터리 '/home/hk/whisper/nstore/src' 나감
-make[1]: *** [Makefile:413: all-recursive] 오류 1
-make[1]: 디렉터리 '/home/hk/whisper/nstore' 나감
-make: *** [Makefile:345: all] 오류 2
+make[2]: *** [Makefile:466: libpm.o] Error 1
+make[2]: Leaving directory '/home/hk/whisper/nstore/src'
+make[1]: *** [Makefile:413: all-recursive] Error 1
+make[1]: Leaving directory '/home/hk/whisper/nstore'
+make: *** [Makefile:345: all] Error 2
+[whisper]$
 
-## echo : too much warning, but completed.
+## echo : completed(too much warning)
 
-## redis : too much warning, but completed.
+## redis : completed(too much warning).
 
 ## ctree : completed, but strange(just going in and out the directories.)
 
@@ -68,33 +73,22 @@ make: *** [Makefile:345: all] 오류 2
 
 error message :
 
-[whisper]$ ./script.py -b -w 'memcached'
-
-\>>> scons --build-bench=memcached --config-ftrace
-
-scons: Reading SConscript files ...
-scons: done reading SConscript files.
-scons: Building targets ...
-(COMPILE)  build/bench/memcached/memcached-1.2.4-mtm/assoc.c
-In file included from build/bench/memcached/memcached-1.2.4-mtm/assoc.c:22:
-bench/memcached/memcached-1.2.4-mtm/memcached.h:12:10: fatal error: event.h: No such file or directory
- #include <event.h>
-          ^~~~~~~~~
-compilation terminated.
-scons: *** [build/bench/memcached/memcached-1.2.4-mtm/assoc.o] Error 1
+(LINK)     build/library/pmalloc/libpmalloc.so
+(LINK)     build/bench/memcached/memcached-1.2.4-mtm/libpvar.so
+/bin/ld: cannot find -lalps
+collect2: error: ld returned 1 exit status
+scons: *** [build/bench/memcached/memcached-1.2.4-mtm/libpvar.so] Error 1
 scons: building terminated because of errors.
 
 ## vacation : error
 
 error message : 
 
-In file included from build/library/mtm/include/config.h:36,
-                 from build/library/mtm/src/config.c:35:
-library/common/config_generic.h:37:10: fatal error: libconfig.h: No such file or directory
- #include <libconfig.h>
-          ^~~~~~~~~~~~~
-compilation terminated.
-scons: *** [build/library/mtm/src/config.os] Error 1
+(COMPILE)  build/bench/stamp-kozy/vacation/pvar.c
+(LINK)     build/bench/stamp-kozy/vacation/libpvar.so
+/bin/ld: cannot find -lalps
+collect2: error: ld returned 1 exit status
+scons: *** [build/bench/stamp-kozy/vacation/libpvar.so] Error 1
 scons: building terminated because of errors.
 
 ## nfs, exim, sql: error
@@ -103,7 +97,59 @@ error message : please visit github.com/snalli/PMFS-new
 
 # 3. Run whisper applications
 ===========================================================================
-## ycsb, tpcc, ctree, hashmap, memcached : No such file or directory
+## ycsb, tpcc : No such file or directory
+
+## ctree
+
+[whisper]$ ./script.py -r -z 'small' -w 'ctree'
+
+>>> ./run_ctree.sh --small
+
+failed to enable tracing. err = -1
+failed to enable tracing. err = -1
+map_insert [1]
+total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-avg;latency-min;latency-max;latency-std-dev;threads;ops-per-thread;data-size;seed;repeats;type;seed;max-key;external-tx;alloc
+removing file failed: Operation not permitted
+TOTAL EPOCH COUNT : 0, RUNTIME : 409 us
+exiting main.
+
+## hashmap
+
+[whisper]$ ./script.py -r -z 'small' -w 'hashmap'
+
+>>> ./run_hashmap.sh --small
+
+failed to enable tracing. err = -1
+failed to enable tracing. err = -1
+map_insert [1]
+total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-avg;latency-min;latency-max;latency-std-dev;threads;ops-per-thread;data-size;seed;repeats;type;seed;max-key;external-tx;alloc
+removing file failed: Operation not permitted
+TOTAL EPOCH COUNT : 0, RUNTIME : 204 us
+exiting main.
+
+## memcached
+
+[whisper]$ ./script.py -r -z 'small' -w 'memcached'
+
+>>> ./run_memcache.sh
+
+memcached: no process found
+./run_memcache.sh: line 18: ./build/bench/memcached/memcached-1.2.4-mtm/memcached: No such file or directory
+
+>>> starting memslap client
+
+
+>>> ./run_memslap.sh --small
+
+/home/hk/whisper/mnemosyne-gcc/usermode/bench/memcached/memslap: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory
+/home/hk/whisper/mnemosyne-gcc/usermode/bench/memcached/memslap: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory
+/home/hk/whisper/mnemosyne-gcc/usermode/bench/memcached/memslap: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory
+/home/hk/whisper/mnemosyne-gcc/usermode/bench/memcached/memslap: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory
+
+>>> kill -s SIGKILL `pgrep memcached`
+
+sh: line 0: kill: SIGKILL: invalid signal specification
+[whisper]$
 
 ## echo
 
