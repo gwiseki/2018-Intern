@@ -14,7 +14,7 @@ git clone --recursive https://github.com/swapnilh/whisper.git
 
 error message : 
 
->>> make
+\>>> make
 
 make  all-recursive
 make[1]: Entering directory '/home/hk/whisper/nstore'
@@ -40,7 +40,7 @@ error message :
 
 [whisper]$ ./script.py -b -w 'tpcc'
 
->>> make
+\>>> make
 
 make  all-recursive
 make[1]: Entering directory '/home/hk/whisper/nstore'
@@ -103,7 +103,7 @@ error message : please visit github.com/snalli/PMFS-new
 
 [whisper]$ ./script.py -r -z 'small' -w 'ctree'
 
->>> ./run_ctree.sh --small
+\>>> ./run_ctree.sh --small
 
 failed to enable tracing. err = -1
 failed to enable tracing. err = -1
@@ -117,7 +117,7 @@ exiting main.
 
 [whisper]$ ./script.py -r -z 'small' -w 'hashmap'
 
->>> ./run_hashmap.sh --small
+\>>> ./run_hashmap.sh --small
 
 failed to enable tracing. err = -1
 failed to enable tracing. err = -1
@@ -131,22 +131,22 @@ exiting main.
 
 [whisper]$ ./script.py -r -z 'small' -w 'memcached'
 
->>> ./run_memcache.sh
+\>>> ./run_memcache.sh
 
 memcached: no process found
 ./run_memcache.sh: line 18: ./build/bench/memcached/memcached-1.2.4-mtm/memcached: No such file or directory
 
->>> starting memslap client
+\>>> starting memslap client
 
 
->>> ./run_memslap.sh --small
+\>>> ./run_memslap.sh --small
 
 /home/hk/whisper/mnemosyne-gcc/usermode/bench/memcached/memslap: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory
 /home/hk/whisper/mnemosyne-gcc/usermode/bench/memcached/memslap: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory
 /home/hk/whisper/mnemosyne-gcc/usermode/bench/memcached/memslap: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory
 /home/hk/whisper/mnemosyne-gcc/usermode/bench/memcached/memslap: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory
 
->>> kill -s SIGKILL `pgrep memcached`
+\>>> kill -s SIGKILL `pgrep memcached`
 
 sh: line 0: kill: SIGKILL: invalid signal specification
 [whisper]$
