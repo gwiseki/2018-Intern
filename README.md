@@ -170,7 +170,7 @@ error message : please visit github.com/snalli/PMFS-new
 ----------------------------------------------------------
 [whisper]$ ./script.py -r -z 'small' -w 'redis'
 
->>> ./run-redis-server.sh
+\>>> ./run-redis-server.sh
 
 failed to enable tracing. err = -1
 41188:C 21 Jul 15:26:20.064 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
@@ -181,21 +181,20 @@ failed to enable tracing. err = -1
 
 \>>> ./run-redis-cli.sh --small
 
-63250 Gets/sec | Hits: 63250 (100.00%) | Misses: 0 (0.00%)
-63250 Gets/sec | Hits: 63250 (100.00%) | Misses: 0 (0.00%)
-61000 Gets/sec | Hits: 61000 (100.00%) | Misses: 0 (0.00%)
-....(repetition)
-....
-61000 Gets/sec | Hits: 61000 (100.00%) | Misses: 0 (0.00%)
+63250 Gets/sec | Hits: 63250 (100.00%) | Misses: 0 (0.00%) <br/>
+63250 Gets/sec | Hits: 63250 (100.00%) | Misses: 0 (0.00%) <br/> 
+61000 Gets/sec | Hits: 61000 (100.00%) | Misses: 0 (0.00%) <br/>
+....(repetition) <br/>
+.... <br/>
+61000 Gets/sec | Hits: 61000 (100.00%) | Misses: 0 (0.00%) <br/>
 \>>> kill -s SIGKILL `pgrep redis`
 
 sh: line 0: kill: SIGKILL: invalid signal specification
 [whisper]$
 
 ----------------------------------------------------------
-There's a message that 'Cannot int persistent memory' at the beginning of the exectuion.
-I read README.md file on redis directory.
-So install the pmem libraries, and 'make test'
+There's a message that 'Cannot int persistent memory' at the beginning of the exectuion, I regarded this as the problem which happens in non-PM situation. and I searched the operation of the remaining part in operation message. the opeartion of remaining part is written in run-redis-cli.sh file.<br/
 
+the remaining part is simulating a cache workload with an 80-20 distribution. (--lru-test option)
 
 
