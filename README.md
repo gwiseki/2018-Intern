@@ -195,6 +195,6 @@ sh: line 0: kill: SIGKILL: invalid signal specification
 ----------------------------------------------------------
 There's a message that 'Cannot int persistent memory' at the beginning of the exectuion, I regarded this as the problem which happens in non-PM situation. and I searched the operation of the remaining part in operation message. the opeartion of remaining part is written in run-redis-cli.sh file.<br/
 
-the remaining part is simulating a cache workload with an 80-20 distribution. (--lru-test option)
+the remaining part is simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c.
 
 
