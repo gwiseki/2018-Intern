@@ -200,9 +200,9 @@ Redis program in Whisper performs cycles of 1 second with 50% writes and 50% rea
 
 ------------------------------------------------------------
 * What I did last week 
-- (Ongoing) Reading paper on Whisper
-- (Ongoing) Building and Executing applications in Whisper benchmark suite
-- (Ongoing) Analyzing the result of application(redis) which can be executed, and the cause of application(others) which cannot be executed.
+- (Ongoing) Read paper on Whisper
+- (Ongoing) Build and Execute applications in Whisper benchmark suite
+- (Ongoing) Analyze the result of application(redis) which can be executed, and the cause of application(others) which cannot be executed.
 
 * What I will do for next two weeks
 - The things which are ongoing on last week
