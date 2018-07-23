@@ -192,17 +192,16 @@ sh: line 0: kill: SIGKILL: invalid signal specification
 ----------------------------------------------------------
 There's a message that 'Cannot int persistent memory' at the beginning of the exectuion, I regarded this as the problem which happens in non-PM situation. and I searched the operation of the remaining part in operation message. the opeartion of remaining part is written in run-redis-cli.sh file.<br/>
 
-the remaining part is simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. <br/>
+the remaining part is simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. That function has so many inner user-defined functions, so it is hard to analyze. But simply it performs cycles of 1 second with 50% writes and 50% reads. It uses pipelining batching writes / reads N times per cycle in order to fill the target instance easily.
 
-Redis program in Whisper performs cycles of 1 second with 50% writes and 50% reads. It uses pipelining batching writes / reads N times per cycle in order to fill the target instance easily.
-
+------------------------------------------------------------
 <br/>If you have anything not understand, please ask to gwak0320@gmail.com.
 
 ------------------------------------------------------------
 -- What I did last week 
 - (Ongoing) Read paper on Whisper
 - (Ongoing) Build and Execute applications in Whisper benchmark suite
-- (Ongoing) Analyze the result of application(redis) which can be executed, and the cause of application(others) which cannot be executed.
+- (Ongoing) Analyze the result of application(redis) which can be executed, and the cause of application(others) which cannot be executed with Dongui
 
 -- What I will do for next two weeks
 - The things which are ongoing on last week
