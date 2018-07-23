@@ -192,7 +192,7 @@ sh: line 0: kill: SIGKILL: invalid signal specification
 ----------------------------------------------------------
 There's a message that 'Cannot int persistent memory' at the beginning of the exectuion, I regarded this as the problem which happens in non-PM situation. and I searched the operation of the remaining part in operation message. the opeartion of remaining part is written in run-redis-cli.sh file.<br/>
 
-the remaining part is simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. That function has so many inner user-defined functions, so it is difficult to analyze. But simply it performs cycles of 1 second with 50% writes and 50% reads. It uses pipelining batching writes / reads N times per cycle in order to fill the target instance easily. I will keep analyzing it.
+the remaining part is simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. That function has so many inner user-defined functions, so it is difficult to analyze. But simply it performs cycles of 1 second with 50% writes and 50% reads. I will keep analyzing it.
 
 ------------------------------------------------------------
 <br/>If you have anything not understood, please ask to gwak0320@gmail.com.
