@@ -3,13 +3,11 @@ This is really beginning version. I will update gradually.<br/>
 And on same machine, the result can be different.
 
 # 1. whisper Download
-===========================================================================
 git clone --recursive https://github.com/swapnilh/whisper.git
 
 -> successful
 
 # 2. build whisper applications
-===========================================================================
 ## ycsb : error
 
 error message : 
@@ -96,7 +94,6 @@ scons: building terminated because of errors.
 error message : please visit github.com/snalli/PMFS-new
 
 # 3. Run whisper applications
-===========================================================================
 ## ycsb, tpcc : No such file or directory
 
 ## ctree
@@ -198,3 +195,15 @@ There's a message that 'Cannot int persistent memory' at the beginning of the ex
 the remaining part is simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. <br/>
 
 Redis program in Whisper performs cycles of 1 second with 50% writes and 50% reads. It uses pipelining batching writes / reads N times per cycle in order to fill the target instance easily.
+
+<br/>If you have anything not understand, please ask to gwak0320@gmail.com.
+
+------------------------------------------------------------
+* What I did last week 
+- (Ongoing) Reading paper on Whisper
+- (Ongoing) Building and Executing applications in Whisper benchmark suite
+- (Ongoing) Analyzing the result of application(redis) which can be executed, and the cause of application(others) which cannot be executed.
+
+* What I will do for next two weeks
+- The things which are ongoing on last week
+- Execute applications in Whisper on 3DXpoint and analyze the result
