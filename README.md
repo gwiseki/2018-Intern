@@ -1,4 +1,4 @@
-whiper applications : ycsb,tpcc,echo,redis,ctree,hashmap,memcached,vacation,nfs,exim,sql <br/>
+whiper applications : ycsb, tpcc, echo, redis, ctree, hashmap, memcached, vacation, nfs, exim, sql <br/>
 This is really beginning version. I will update gradually.<br/>
 And on same machine, the result can be different.
 
