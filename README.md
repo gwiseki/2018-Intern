@@ -83,6 +83,10 @@ scons: building terminated because of errors.
 
 ---> dynamic exception specifications are deprecated, header does not exist, or cannot find some options.
 
+## nfs, exim, sql: error
+
+error message : please visit github.com/snalli/PMFS-new
+
 ## echo : completed(too much warning)
 
 ## redis : completed(too much warning).
@@ -91,10 +95,6 @@ scons: building terminated because of errors.
 
 ## hashmap : completed, but strange(just going in and out the directories.)
 
-
-## nfs, exim, sql: error
-
-error message : please visit github.com/snalli/PMFS-new
 
 # 3. Run whisper applications
 ## ycsb, tpcc : No such file or directory
