@@ -1,6 +1,6 @@
 whiper applications : ycsb, tpcc, echo, redis, ctree, hashmap, memcached, vacation, nfs, exim, sql <br/>
 This is really beginning version. I will update gradually.<br/>
-And on same machine, the result can be different.
+And on same kinds of machine, the results can be different.
 
 # 1. whisper Download
 git clone --recursive https://github.com/swapnilh/whisper.git
