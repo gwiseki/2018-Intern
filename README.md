@@ -199,11 +199,11 @@ Redis program in Whisper performs cycles of 1 second with 50% writes and 50% rea
 <br/>If you have anything not understand, please ask to gwak0320@gmail.com.
 
 ------------------------------------------------------------
-* What I did last week 
+** What I did last week 
 - (Ongoing) Read paper on Whisper
 - (Ongoing) Build and Execute applications in Whisper benchmark suite
 - (Ongoing) Analyze the result of application(redis) which can be executed, and the cause of application(others) which cannot be executed.
 
-* What I will do for next two weeks
+** What I will do for next two weeks
 - The things which are ongoing on last week
 - Execute applications in Whisper on 3DXpoint and analyze the result
