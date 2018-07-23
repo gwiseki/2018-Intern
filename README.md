@@ -59,14 +59,6 @@ make[1]: Leaving directory '/home/hk/whisper/nstore'
 make: *** [Makefile:345: all] Error 2
 [whisper]$
 
-## echo : completed(too much warning)
-
-## redis : completed(too much warning).
-
-## ctree : completed, but strange(just going in and out the directories.)
-
-## hashmap : completed, but strange(just going in and out the directories.)
-
 ## memcached : error
 
 error message :
@@ -88,6 +80,17 @@ error message :
 collect2: error: ld returned 1 exit status
 scons: *** [build/bench/stamp-kozy/vacation/libpvar.so] Error 1
 scons: building terminated because of errors.
+
+---> dynamic exception specifications are deprecated, header does not exist, or cannot find some options.
+
+## echo : completed(too much warning)
+
+## redis : completed(too much warning).
+
+## ctree : completed, but strange(just going in and out the directories.)
+
+## hashmap : completed, but strange(just going in and out the directories.)
+
 
 ## nfs, exim, sql: error
 
