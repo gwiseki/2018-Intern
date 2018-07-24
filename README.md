@@ -100,7 +100,7 @@ error message : <br/>
 ```
 ./run.sh: line 50: 15295 Segmentation fault      (core dumped) $sudo $time $bin -x10000 -k1000 -w -p0.2 -e2 $trace $var
 ```
-
+Actually, It was able to execute at first time, but after some times of execution, now it can't be executed.
 
 ## ctree
 ```
