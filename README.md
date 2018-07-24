@@ -47,14 +47,9 @@ scons: building terminated because of errors.
 
 error message : please visit github.com/snalli/PMFS-new
 
-## echo : completed(too much warning)
+## echo, redis : completed(too much warning)
 
-## redis : completed(too much warning)
-
-## ctree : completed
-
-## hashmap : completed
-
+## ctree, hashmap : completed
 
 # 3. Run whisper applications
 ## ycsb : executed well.
