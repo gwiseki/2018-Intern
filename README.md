@@ -36,7 +36,6 @@ collect2: error: ld returned 1 exit status
 scons: *** [build/bench/stamp-kozy/vacation/libpvar.so] Error 1
 scons: building terminated because of errors.
 ```
----> dynamic exception specifications are deprecated, header does not exist, or cannot find some options.
 
 ## nfs, exim, sql: error
 
