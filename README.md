@@ -8,56 +8,11 @@ git clone --recursive https://github.com/swapnilh/whisper.git
 -> successful
 
 # 2. build whisper applications
-## ycsb : error
+## ycsb, tpcc : completed.
 
-error message : 
-
-\>>> make
-
-make  all-recursive
-make[1]: Entering directory '/home/hk/whisper/nstore'
-Making all in src
-make[2]: Entering directory '/home/hk/whisper/nstore/src'
-g++ -DHAVE_CONFIG_H -I. -I..  -I./common -Wno-pointer-arith   -Wall -Wextra -Werror  -ggdb -O3 -D_ENABLE_FTRACE -MT libpm.o -MD -MP -MF .deps/libpm.Tpo -c -o libpm.o libpm.cpp
-libpm.cpp:9:31: error: dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
- void* operator new(size_t sz) throw (std::bad_alloc) {
-                               ^~~~~
-libpm.cpp:37:38: error: dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
- void *operator new[](std::size_t sz) throw (std::bad_alloc) {
-                                      ^~~~~
-cc1plus: all warnings being treated as errors
-make[2]: *** [Makefile:466: libpm.o] Error 1
-make[2]: Leaving directory '/home/hk/whisper/nstore/src'
-make[1]: *** [Makefile:413: all-recursive] Error 1
-make[1]: Leaving directory '/home/hk/whisper/nstore'
-make: *** [Makefile:345: all] Error 2
-
-## tpcc : error
-
-error message :
-
-[whisper]$ ./script.py -b -w 'tpcc'
-
-\>>> make
-
-make  all-recursive
-make[1]: Entering directory '/home/hk/whisper/nstore'
-Making all in src
-make[2]: Entering directory '/home/hk/whisper/nstore/src'
-g++ -DHAVE_CONFIG_H -I. -I..  -I./common -Wno-pointer-arith   -Wall -Wextra -Werror  -ggdb -O3 -D_ENABLE_FTRACE -MT libpm.o -MD -MP -MF .deps/libpm.Tpo -c -o libpm.o libpm.cpp
-libpm.cpp:9:31: error: dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
- void* operator new(size_t sz) throw (std::bad_alloc) {
-                               ^~~~~
-libpm.cpp:37:38: error: dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
- void *operator new[](std::size_t sz) throw (std::bad_alloc) {
-                                      ^~~~~
-cc1plus: all warnings being treated as errors
-make[2]: *** [Makefile:466: libpm.o] Error 1
-make[2]: Leaving directory '/home/hk/whisper/nstore/src'
-make[1]: *** [Makefile:413: all-recursive] Error 1
-make[1]: Leaving directory '/home/hk/whisper/nstore'
-make: *** [Makefile:345: all] Error 2
-[whisper]$
+It may incur error message.
+error message : dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
+Resolve it by removing '-Werror' option in Makefile.
 
 ## memcached : error
 
@@ -89,11 +44,11 @@ error message : please visit github.com/snalli/PMFS-new
 
 ## echo : completed(too much warning)
 
-## redis : completed(too much warning).
+## redis : completed(too much warning)
 
-## ctree : completed, but strange(just going in and out the directories.)
+## ctree : completed
 
-## hashmap : completed, but strange(just going in and out the directories.)
+## hashmap : completed
 
 
 # 3. Run whisper applications
