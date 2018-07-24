@@ -94,10 +94,13 @@ max dur :7.06
 OPT_WAL :: Duration(s) : 0.01 Throughput  : 141643.06
 TOTAL EPOCHS : 0
 ```
-## tpcc : executed well.
+## tpcc : error. <br/>
 
-It may incur error message.<br/>
 error message : <br/>
+```
+./run.sh: line 50: 15295 Segmentation fault      (core dumped) $sudo $time $bin -x10000 -k1000 -w -p0.2 -e2 $trace $var
+```
+
 
 ## ctree
 ```
