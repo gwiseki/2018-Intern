@@ -102,35 +102,41 @@ error message : <br/>
 ```
 Actually, It was able to execute at first time, but after some times of execution, now it can't be executed.
 
-## ctree
+## ctree : executed well.
+It may incur error message.<br/>
+error message : removing file failed: Operation not permitted <br/>
+Resolve it by just using 'sudo' instruction.
 ```
-[whisper]$ ./script.py -r -z 'small' -w 'ctree'
+[whisper]$ sudo ./script.py -r -z 'small' -w 'ctree'
 
-\>>> ./run_ctree.sh --small
+>>> ./run_ctree.sh --small
 
-failed to enable tracing. err = -1
-failed to enable tracing. err = -1
+tracing disabled by user.
+tracing disabled by user.
 map_insert [1]
 total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-avg;latency-min;latency-max;latency-std-dev;threads;ops-per-thread;data-size;seed;repeats;type;seed;max-key;external-tx;alloc
-removing file failed: Operation not permitted
-TOTAL EPOCH COUNT : 0, RUNTIME : 409 us
+0.043593;46979.715820;0.046375;0.040812;0.046375;0.002782;42571;11724;18025255;416775.000000;2;1024;128;0;1;ctree;2385006593;0;false;false
+TOTAL EPOCH COUNT : 0, RUNTIME : 1507338 us
 exiting main.
 ```
-## hashmap
+## hashmap : executed well.
+It may incur error message.<br/>
+error message : removing file failed: Operation not permitted <br/>
+Resolve it by just using 'sudo' instruction.
 ```
-[whisper]$ ./script.py -r -z 'small' -w 'hashmap'
+[whisper]$ sudo ./script.py -r -z 'small' -w 'hashmap'
 
-\>>> ./run_hashmap.sh --small
+>>> ./run_hashmap.sh --small
 
-failed to enable tracing. err = -1
-failed to enable tracing. err = -1
+tracing disabled by user.
+tracing disabled by user.
 map_insert [1]
 total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-avg;latency-min;latency-max;latency-std-dev;threads;ops-per-thread;data-size;seed;repeats;type;seed;max-key;external-tx;alloc
-removing file failed: Operation not permitted
-TOTAL EPOCH COUNT : 0, RUNTIME : 204 us
+0.042597;48078.571466;0.046742;0.038452;0.046742;0.004145;41598;12001;21136400;472617.000000;2;1024;128;0;1;hashmap_tx;2385006593;0;false;false
+TOTAL EPOCH COUNT : 0, RUNTIME : 1472571 us
 exiting main.
 ```
-## memcached
+## memcached : error
 ```
 [whisper]$ ./script.py -r -z 'small' -w 'memcached'
 
@@ -228,7 +234,7 @@ There's a message that 'Cannot int persistent memory' at the beginning of the ex
 the remaining part is simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. That function has so many inner user-defined functions, so it is difficult to analyze. But simply it performs cycles of 1 second with 50% writes and 50% reads. I will keep analyzing it.
 
 ------------------------------------------------------------
-<br/>If you have anything not understood, please ask to gwak0320@gmail.com.
+If you have anything not understood, please ask to gwak0320@gmail.com.
 ------------------------------------------------------------
 -- What I did last week (07.24.18)
 - (Ongoing) Read paper on Whisper
