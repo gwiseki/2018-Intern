@@ -1,3 +1,9 @@
+Development Environment
+```
+OS : Pedora
+Architecture: x86_64
+Model name: Intel(R) Xeon(R) Silver 4116 CPU @ 2.10GHz
+```
 whiper applications : ycsb, tpcc, echo, redis, ctree, hashmap, memcached, vacation, nfs, exim, sql <br/>
 This is really beginning version. I will update gradually.<br/>
 And on same kinds of machine, the results can be different.
@@ -220,9 +226,8 @@ the remaining part is simulating a cache workload with an 80-20 distribution(--l
 
 ------------------------------------------------------------
 <br/>If you have anything not understood, please ask to gwak0320@gmail.com.
-
 ------------------------------------------------------------
--- What I did last week 
+-- What I did last week (07.24.18)
 - (Ongoing) Read paper on Whisper
 - (Ongoing) Build and Execute applications in Whisper benchmark suite
 - (Ongoing) Analyze the result of application(redis) which can be executed, and the cause of application(others) which cannot be executed with Dongui
