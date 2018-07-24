@@ -10,12 +10,12 @@ git clone --recursive https://github.com/swapnilh/whisper.git
 # 2. build whisper applications
 ## ycsb, tpcc : completed.
 
-It may incur error message.
-error message : dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
-Resolve it by removing '-Werror' option in Makefile.
+It may incur error message.<br/>
+error message : dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]<br/>
+Resolve it by removing '-Werror' option in Makefile.<br/>
 
 ## memcached : error
-
+```c
 error message :
 
 (LINK)     build/library/pmalloc/libpmalloc.so
@@ -24,9 +24,9 @@ error message :
 collect2: error: ld returned 1 exit status
 scons: *** [build/bench/memcached/memcached-1.2.4-mtm/libpvar.so] Error 1
 scons: building terminated because of errors.
-
+```
 ## vacation : error
-
+```
 error message : 
 
 (COMPILE)  build/bench/stamp-kozy/vacation/pvar.c
@@ -35,7 +35,7 @@ error message :
 collect2: error: ld returned 1 exit status
 scons: *** [build/bench/stamp-kozy/vacation/libpvar.so] Error 1
 scons: building terminated because of errors.
-
+```
 ---> dynamic exception specifications are deprecated, header does not exist, or cannot find some options.
 
 ## nfs, exim, sql: error
@@ -106,15 +106,38 @@ memcached: no process found
 sh: line 0: kill: SIGKILL: invalid signal specification
 [whisper]$
 
-## echo
+## echo : executed well.
 
-[whisper]$ ./script.py -r -z 'small' -w 'echo'
+[hk@mangalyaan whisper]$ sudo ./script.py -r -z 'small' -w 'echo'
 
-\>>> ./run.sh --small
+>>> ./run.sh --small
 
-Unable to allocate memory pool
-0.00user 0.00system 0:00.03elapsed 58%CPU (0avgtext+0avgdata 4496maxresident)k
-0inputs+0outputs (0major+337minor)pagefaults 0swaps
+got arguments: CPUS=2
+,iterations=8
+, key_size=128
+, value_size=1024
+, merge_every=8
+, put_probability=0.800000
+, update_probability=0.700000
+, num_threads=2
+ operations=10000
+
+Size of PM pool:1073741824
+maximum number of keys printable is 1844674407
+KP: 2512: Using 16 for local hash table size (same as merge frequency), 10104 for master hash table size
+KP: 2512: Total memory allocation size (just evaluation, not kv stores themselves) could be up to 0 bytes (0 MB)
+Will create 120 random integers for each child thread
+Now starting evaluation for key-value store: kp_kvstore
+On 2 cores
+Running on storage platform: disk
+Starting multi-threaded tests: num_threads=2, NUM_CPUS=2
+0.200000 GETS
+no free memory of size 303360 available
+Increase the size of the PM pool:
+Increase PSEGMENT_RESERVED_REGION_SIZE in whisper/kv-echo/echo/include/pm_instr.h and rebuild echo
+Command exited with non-zero status 1
+0.62user 0.08system 0:00.72elapsed 97%CPU (0avgtext+0avgdata 1053360maxresident)k
+0inputs+0outputs (0major+16740minor)pagefaults 0swaps
 
 ## nfs, exim, sql : error
 
