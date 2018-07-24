@@ -15,7 +15,7 @@ error message : dynamic exception specifications are deprecated in C++11 [-Werro
 Resolve it by removing '-Werror' option in Makefile.<br/>
 
 ## memcached : error
-```c
+```
 error message :
 
 (LINK)     build/library/pmalloc/libpmalloc.so
@@ -52,10 +52,50 @@ error message : please visit github.com/snalli/PMFS-new
 
 
 # 3. Run whisper applications
-## ycsb, tpcc : No such file or directory
+## ycsb : executed well.
+It may incur error message.<br/>
+error message : <br/>
+Resolve it by just using 'sudo' instruction.
+```
+[hk@mangalyaan whisper]$ ./script.py -r -z 'small' -w 'ycsb'
+
+>>> ./run.sh --small --ycsb
+
+num_txns: 1000
+num_keys: 10000
+opt_wal_enable
+per_writes: 0.5
+num_executors: 2
+ycsb_benchmark
+num_keys :: 5000
+num_txns :: 500
+num_exec :: 2
+Initialization Mode
+num_keys :: 5000
+num_txns :: 500
+num_exec :: 2
+Initialization Mode
+LOADING...
+Finished :: 100
+EXECUTING...
+num_txns :: 500
+num_txns :: 500
+Finished :: 100
+duration :: 6.627
+duration :: 7.06
+dur :0 :: 6.627
+dur :1 :: 7.06
+max dur :7.06
+OPT_WAL :: Duration(s) : 0.01 Throughput  : 141643.06
+TOTAL EPOCHS : 0[hk@mangalyaan whisper]$
+```
+## tpcc : executed well.
+
+It may incur error message.<br/>
+error message : <br/>
 
 ## ctree
-
+```
 [whisper]$ ./script.py -r -z 'small' -w 'ctree'
 
 \>>> ./run_ctree.sh --small
@@ -67,9 +107,9 @@ total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-
 removing file failed: Operation not permitted
 TOTAL EPOCH COUNT : 0, RUNTIME : 409 us
 exiting main.
-
+```
 ## hashmap
-
+```
 [whisper]$ ./script.py -r -z 'small' -w 'hashmap'
 
 \>>> ./run_hashmap.sh --small
@@ -81,9 +121,9 @@ total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-
 removing file failed: Operation not permitted
 TOTAL EPOCH COUNT : 0, RUNTIME : 204 us
 exiting main.
-
+```
 ## memcached
-
+```
 [whisper]$ ./script.py -r -z 'small' -w 'memcached'
 
 \>>> ./run_memcache.sh
@@ -105,9 +145,13 @@ memcached: no process found
 
 sh: line 0: kill: SIGKILL: invalid signal specification
 [whisper]$
-
+```
 ## echo : executed well.
 
+It may incur error message.<br/>
+error message : Unable to allocate memory pool<br/>
+Resolve it by just using 'sudo' instruction.
+```
 [hk@mangalyaan whisper]$ sudo ./script.py -r -z 'small' -w 'echo'
 
 >>> ./run.sh --small
@@ -138,7 +182,7 @@ Increase PSEGMENT_RESERVED_REGION_SIZE in whisper/kv-echo/echo/include/pm_instr.
 Command exited with non-zero status 1
 0.62user 0.08system 0:00.72elapsed 97%CPU (0avgtext+0avgdata 1053360maxresident)k
 0inputs+0outputs (0major+16740minor)pagefaults 0swaps
-
+```
 ## nfs, exim, sql : error
 
 error message : please visit github.com/snalli/PMFS-new
@@ -147,7 +191,7 @@ error message : please visit github.com/snalli/PMFS-new
 
 ----------------------------------------------------------
 [whisper]$ ./script.py -r -z 'small' -w 'redis'
-
+```
 \>>> ./run-redis-server.sh
 
 failed to enable tracing. err = -1
@@ -169,7 +213,7 @@ failed to enable tracing. err = -1
 
 sh: line 0: kill: SIGKILL: invalid signal specification
 [whisper]$
-
+```
 ----------------------------------------------------------
 There's a message that 'Cannot int persistent memory' at the beginning of the exectuion, I regarded this as the problem which happens in non-PM situation. and I searched the operation of the remaining part in operation message. the opeartion of remaining part is written in run-redis-cli.sh file.<br/>
 
