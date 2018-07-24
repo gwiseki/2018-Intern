@@ -56,7 +56,7 @@ It may incur error message.<br/>
 error message : <br/>
 Resolve it by just using 'sudo' instruction.
 ```
-[hk@mangalyaan whisper]$ ./script.py -r -z 'small' -w 'ycsb'
+[whisper]$ ./script.py -r -z 'small' -w 'ycsb'
 
 >>> ./run.sh --small --ycsb
 
@@ -86,7 +86,7 @@ dur :0 :: 6.627
 dur :1 :: 7.06
 max dur :7.06
 OPT_WAL :: Duration(s) : 0.01 Throughput  : 141643.06
-TOTAL EPOCHS : 0[hk@mangalyaan whisper]$
+TOTAL EPOCHS : 0
 ```
 ## tpcc : executed well.
 
@@ -151,7 +151,7 @@ It may incur error message.<br/>
 error message : Unable to allocate memory pool<br/>
 Resolve it by just using 'sudo' instruction.
 ```
-[hk@mangalyaan whisper]$ sudo ./script.py -r -z 'small' -w 'echo'
+[whisper]$ sudo ./script.py -r -z 'small' -w 'echo'
 
 >>> ./run.sh --small
 
