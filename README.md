@@ -31,6 +31,12 @@ collect2: error: ld returned 1 exit status
 scons: *** [build/bench/memcached/memcached-1.2.4-mtm/libpvar.so] Error 1
 scons: building terminated because of errors.
 ```
+or you encounter other kind of message like that header does not exit, visit
+https://github.com/snalli/mnemosyne-gcc/tree/cfed43142cdcb5175f1b7c75cd6a922ce561060e<br/>
+
+And maybe in /whisper/mnemosyne-gcc/usermode/library/pmalloc/include/alps,
+install-deps -> cmake -> make.... or something. I will anlayze.
+
 ## vacation : error
 ```
 error message : 
