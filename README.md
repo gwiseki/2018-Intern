@@ -35,7 +35,18 @@ or you encounter other kind of message like that header does not exit, visit
 https://github.com/snalli/mnemosyne-gcc/tree/cfed43142cdcb5175f1b7c75cd6a922ce561060e<br/>
 
 And maybe in /whisper/mnemosyne-gcc/usermode/library/pmalloc/include/alps,
-install-deps -> cmake -> make.... or something. I will anlayze.
+install-deps -> cmake -> make.... or something. Now I encountered this error.
+```
+/home/hk/whisper/mnemosyne-gcc/usermode/library/pmalloc/include/alps/src/common/log.cc:30:10: fatal error: boost/utility/empty_deleter.hpp: No such file or directory
+ #include <boost/utility/empty_deleter.hpp>
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [src/CMakeFiles/alps.dir/build.make:128: src/CMakeFiles/alps.dir/common/log.cc.o] 오류 1
+make[1]: *** [CMakeFiles/Makefile2:554: src/CMakeFiles/alps.dir/all] 오류 2
+make: *** [Makefile:163: all] 오류 2
+[alps]$
+```
+If anyone knows how to fix this problem, please teach me.
 
 ## vacation : error
 ```
