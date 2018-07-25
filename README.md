@@ -58,10 +58,13 @@ error message : please visit github.com/snalli/PMFS-new
 ## ctree, hashmap : completed
 
 # 3. Run whisper applications
-## ycsb : executed well.
-It may incur error message.<br/>
-error message : <br/>
-Resolve it by just using 'sudo' instruction.
+## ycsb : error.
+error message :
+```
+./run.sh: line 50:  5040 Aborted                 (core dumped) $sudo $time $bin -x1000 -k10000 -w -p0.5 -e2 $trace $var
+```
+Actually, It was able to execute at first time, but after some times of execution, now it can't be executed.<br/>
+(when executed)↓↓↓
 ```
 [whisper]$ ./script.py -r -z 'small' -w 'ycsb'
 
@@ -95,7 +98,7 @@ max dur :7.06
 OPT_WAL :: Duration(s) : 0.01 Throughput  : 141643.06
 TOTAL EPOCHS : 0
 ```
-## tpcc : error. <br/>
+## tpcc : error.
 
 error message : <br/>
 ```
