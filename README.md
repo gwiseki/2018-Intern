@@ -18,8 +18,8 @@ And on same kinds of machine, the results can be different.
 
 |         | memcached(KVS) | vacation(OLTP, KVS, Mnemosyne) | nfs(PMFS) | exim(PMFS) | sql(PMFS) |
 |:-------:|:--------------:|:------------------------------:|:---------:|:----------:|:---------:|
-| compile |        N       |                N               |     N     |      N     |     N     |
-| execute |        N       |                N               |           |            |           |
+| compile |        N       |                N               |           |            |           |
+| execute |        N       |                N               |     Y     |      Y     |     Y     |
 |   etc   |    Excluded    |            Excluded            |           |            |           |
 
 # 1. whisper Download
