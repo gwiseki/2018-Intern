@@ -250,11 +250,19 @@ the remaining part is simulating a cache workload with an 80-20 distribution(--l
 ------------------------------------------------------------
 If you have anything not understood, please ask to gwak0320@gmail.com.
 ------------------------------------------------------------
--- What I did last week (07.24.18)
+-- What I did last week (07.23.18)
 - (Ongoing) Read paper on Whisper
 - (Ongoing) Build and Execute applications in Whisper benchmark suite
 - (Ongoing) Analyze the result of application(redis) which can be executed, and the cause of application(others) which cannot be executed with Dongui
 
 -- What I will do for next two weeks
 - The things which are ongoing on last week
+- Execute applications in Whisper on 3DXpoint and analyze the result
+--------------------------------------------------------------
+-- What I did last week (07.30.18)
+- (Ongoing) Build and Execute applications in Whisper benchmark suite and benchIT benchmark
+- (Ongoing) Analyze the result of application(redis) which can be executed, and the cause of application(others) which cannot be executed with Dongui
+
+-- What I will do for next two weeks
+- The things which were ongoing on last week
 - Execute applications in Whisper on 3DXpoint and analyze the result
