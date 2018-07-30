@@ -19,7 +19,7 @@ And on same kinds of machine, the results can be different.
 |         | memcached(KVS) | vacation(OLTP, KVS, Mnemosyne) | nfs(PMFS) | exim(PMFS) | sql(PMFS) |
 |:-------:|:--------------:|:------------------------------:|:---------:|:----------:|:---------:|
 | compile |        N       |                N               |           |            |           |
-| execute |        N       |                N               |     Y     |      Y     |     Y     |
+| execute |        N       |                N               |     N     |      N     |     N     |
 |   etc   |    Excluded    |            Excluded            |           |            |           |
 
 # 1. whisper Download
