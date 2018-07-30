@@ -8,6 +8,20 @@ whiper applications : ycsb, tpcc, echo, redis, ctree, hashmap, memcached, vacati
 This is really beginning version. I will update gradually.<br/>
 And on same kinds of machine, the results can be different.
 
+# Current
+
+|         | ycsb(N-store) | tpcc(N-store) | echo(KVS) | redis(KVS) | C-tree | Hashmap |
+|:-------:|:-------------:|:-------------:|:---------:|:----------:|:------:|:-------:|
+| compile |       Y       |       Y       |     Y     |      Y     |    Y   |    Y    |
+| execute |   sometimes   |   sometimes   |     Y     |      Y     |    Y   |    Y    |
+|   etc   |               |               |           |            |        |         |
+
+|         | memcached(KVS) | vacation(OLTP, KVS, Mnemosyne) | nfs(PMFS) | exim(PMFS) | sql(PMFS) |
+|:-------:|:--------------:|:------------------------------:|:---------:|:----------:|:---------:|
+| compile |        N       |                N               |     N     |      N     |     N     |
+| execute |        N       |                N               |     N     |      N     |     N     |
+|   etc   |    Excluded    |            Excluded            |           |            |           |
+
 # 1. whisper Download
 git clone --recursive https://github.com/swapnilh/whisper.git
 
