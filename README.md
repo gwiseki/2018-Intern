@@ -129,7 +129,29 @@ error message : <br/>
 ```
 ./run.sh: line 50: 15295 Segmentation fault      (core dumped) $sudo $time $bin -x10000 -k1000 -w -p0.2 -e2 $trace $var
 ```
-Actually, It was able to execute at first time, but after some times of execution, now it can't be executed.
+Actually, It was able to execute at first time, but after some times of execution, now it can't be executed.<br/>
+(when executed)↓↓↓
+```
+[whisper]$ ./script.py -r -z 'small' -w 'tpcc'
+
+>>> ./run.sh --small --tpcc
+
+num_txns: 10000
+num_keys: 1000
+opt_wal_enable
+per_writes: 0.2
+num_executors: 2
+tpcc_benchmark
+LOADING...
+Finished :: 100
+EXECUTING...
+Finished :: 100
+dur :0 :: 1269.33
+dur :1 :: 1162.68
+max dur :1269.33
+OPT_WAL :: Duration(s) : 1.27 Throughput  : 7878.15
+[whisper]$
+```
 
 ## ctree : executed well.
 It may incur error message.<br/>
@@ -305,7 +327,7 @@ createfile1          30404ops      253ops/s   0.0mb/s      1.7ms/op [0.01ms - 52
 gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$
 ```
 
-## redis : executed well.
+## redis : executed.
 
 ----------------------------------------------------------
 [whisper]$ ./script.py -r -z 'small' -w 'redis'
