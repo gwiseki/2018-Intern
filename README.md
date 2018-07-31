@@ -16,11 +16,11 @@ And on same kinds of machine, the results can be different.
 | execute |   sometimes   |   sometimes   |     Y     |      Y     |    Y   |    Y    |
 |   etc   |               |               |           |            |        |         |
 
-|         | memcached(KVS) | vacation(OLTP, KVS, Mnemosyne) | nfs(PMFS)   | exim(PMFS) | sql(PMFS) |
-|:-------:|:--------------:|:------------------------------:|:-----------:|:----------:|:---------:|
-| compile |        N       |                N               |             |            |           |
-| execute |        N       |                N               |Y(on unbuntu)|      N     |     N     |
-|   etc   |    Excluded    |            Excluded            |             |            |           |
+|         | memcached(KVS) | vacation(OLTP, KVS, Mnemosyne) | nfs(PMFS)  | exim(PMFS) | sql(PMFS) |
+|:-------:|:--------------:|:------------------------------:|:----------:|:----------:|:---------:|
+| compile |        N       |                N               |            |            |           |
+| execute |        N       |                N               |Y(on ubuntu)|      N     |     N     |
+|   etc   |    Excluded    |            Excluded            |            |            |           |
 
 # 1. whisper Download
 git clone --recursive https://github.com/swapnilh/whisper.git
