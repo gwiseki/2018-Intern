@@ -74,9 +74,9 @@ scons: *** [build/bench/stamp-kozy/vacation/libpvar.so] Error 1
 scons: building terminated because of errors.
 ```
 
-## nfs, exim, sql: error
+## nfs, exim, sql
 
-error message : please visit github.com/snalli/PMFS-new
+Use another program (do not need compile)
 
 ## echo, redis : completed(too much warning)
 
@@ -226,9 +226,89 @@ Command exited with non-zero status 1
 0.62user 0.08system 0:00.72elapsed 97%CPU (0avgtext+0avgdata 1053360maxresident)k
 0inputs+0outputs (0major+16740minor)pagefaults 0swaps
 ```
-## nfs, exim, sql : error
+## exim, sql : error
 
 error message : please visit github.com/snalli/PMFS-new
+
+## nfs : executed well.
+
+- run fileserver-asplos.f with filebench (On Ubuntu)
+```
+gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$ sudo filebench -f fileserver-asplos.f            
+Filebench Version 1.5-alpha3
+0.000: Allocated 173MB of shared memory
+0.485: File-server Version 3.0 personality successfully loaded
+0.486: Usage: set $dir=<dir>
+0.487:        set $meanfilesize=<size>     defaults to 131072
+0.487:        set $nfiles=<value>      defaults to 10000
+0.488:        set $nthreads=<value>    defaults to 1
+0.488:        set $meanappendsize=<value>  defaults to 16384
+0.488:        set $iosize=<size>  defaults to 1048576
+0.488:        set $meandirwidth=<size> defaults to 20
+0.488:        run runtime (e.g. run 60)
+0.488: Populating and pre-allocating filesets
+0.563: bigfileset populated: 10000 files, avg. dir. width = 20, avg. dir. depth = 3.1, 0 leafdirs, 1250.000MB total size
+0.565: Removing bigfileset tree (if exists)
+2.633: Pre-allocating directories in bigfileset tree
+2.672: Pre-allocating files in bigfileset tree
+59.977: Waiting for pre-allocation to finish (in case of a parallel pre-allocation)
+59.977: Population and pre-allocation of filesets completed
+60.012: Starting 1 filereader instances
+61.820: Running...
+62.821: Run took 1 seconds...
+62.822: Per-Operation Breakdown
+statfile1            18ops       18ops/s   0.0mb/s      1.4ms/op [0.00ms - 25.58ms]
+deletefile1          18ops       18ops/s   0.0mb/s      4.5ms/op [0.02ms - 44.84ms]
+closefile3           18ops       18ops/s   0.0mb/s      0.0ms/op [0.00ms -  0.01ms]
+readfile1            18ops       18ops/s   2.2mb/s     26.4ms/op [0.07ms - 58.47ms]
+openfile2            19ops       19ops/s   0.0mb/s      8.7ms/op [0.00ms - 164.84ms]
+closefile2           19ops       19ops/s   0.0mb/s      0.0ms/op [0.00ms -  0.00ms]
+appendfilerand1      19ops       19ops/s   0.1mb/s      0.0ms/op [0.01ms -  0.03ms]
+openfile1            19ops       19ops/s   0.0mb/s      0.0ms/op [0.01ms -  0.03ms]
+closefile1           19ops       19ops/s   0.0mb/s      0.0ms/op [0.00ms -  0.00ms]
+wrtfile1             19ops       19ops/s   2.4mb/s      0.1ms/op [0.07ms -  0.20ms]
+createfile1          19ops       19ops/s   0.0mb/s      0.0ms/op [0.01ms -  0.08ms]
+62.825: IO Summary:   205 ops 204.806 ops/s 18/38 rd/wr   4.8mb/s  13.4ms/op
+62.825: Shutting down processes
+gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$ cd ..
+gwak0320@ubuntu:~/whisper/PMFS-new/workloads$ cd ..
+gwak0320@ubuntu:~/whisper/PMFS-new$ vi README.md 
+gwak0320@ubuntu:~/whisper/PMFS-new$ make menuconfig
+make: *** No rule to make target 'menuconfig'.  Stop.
+gwak0320@ubuntu:~/whisper/PMFS-new$
+```
+
+- run nfs-asplos.f with filebench (On Ubuntu)
+```
+gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$ sudo filebench -f nfs-asplos.f
+Filebench Version 1.5-alpha3
+0.000: Allocated 173MB of shared memory
+0.303: File-server Version 3.0 personality successfully loaded
+0.304: Populating and pre-allocating filesets
+0.363: bigfileset populated: 10000 files, avg. dir. width = 20, avg. dir. depth = 3.1, 0 leafdirs, 1250.000MB total size
+0.365: Reusing existing bigfileset tree
+0.366: Pre-allocating files in bigfileset tree
+0.383: Waiting for pre-allocation to finish (in case of a parallel pre-allocation)
+0.384: Population and pre-allocation of filesets completed
+0.392: Starting 1 filereader instances
+1.444: Running...
+121.776: Run took 120 seconds...
+122.011: Per-Operation Breakdown
+statfile1            30396ops      253ops/s   0.0mb/s      0.0ms/op [0.00ms - 17.29ms]
+deletefile1          30184ops      251ops/s   0.0mb/s     28.9ms/op [0.02ms - 2585.62ms]
+closefile3           30404ops      253ops/s   0.0mb/s      0.0ms/op [0.00ms - 10.11ms]
+readfile1            30404ops      253ops/s  33.4mb/s      0.2ms/op [0.00ms - 315.59ms]
+openfile2            30404ops      253ops/s   0.0mb/s      0.0ms/op [0.00ms - 51.97ms]
+closefile2           30404ops      253ops/s   0.0mb/s      0.0ms/op [0.00ms - 17.54ms]
+appendfilerand1      30404ops      253ops/s   2.0mb/s      0.2ms/op [0.00ms - 358.76ms]
+openfile1            30404ops      253ops/s   0.0mb/s      0.0ms/op [0.00ms - 47.32ms]
+closefile1           30404ops      253ops/s   0.0mb/s      0.0ms/op [0.00ms - 27.39ms]
+wrtfile1             30404ops      253ops/s  31.6mb/s      0.6ms/op [0.05ms - 363.77ms]
+createfile1          30404ops      253ops/s   0.0mb/s      1.7ms/op [0.01ms - 529.60ms]
+122.011: IO Summary: 334216 ops 2777.607 ops/s 253/505 rd/wr  67.0mb/s  10.5ms/op
+122.011: Shutting down processes
+gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$
+```
 
 ## redis : executed well.
 
