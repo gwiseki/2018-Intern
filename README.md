@@ -1,6 +1,6 @@
 Development Environment
 ```
-OS : Pedora
+OS : Fedora
 Architecture: x86_64
 Model name: Intel(R) Xeon(R) Silver 4116 CPU @ 2.10GHz
 ```
