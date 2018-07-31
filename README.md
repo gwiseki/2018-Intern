@@ -270,12 +270,7 @@ wrtfile1             19ops       19ops/s   2.4mb/s      0.1ms/op [0.07ms -  0.20
 createfile1          19ops       19ops/s   0.0mb/s      0.0ms/op [0.01ms -  0.08ms]
 62.825: IO Summary:   205 ops 204.806 ops/s 18/38 rd/wr   4.8mb/s  13.4ms/op
 62.825: Shutting down processes
-gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$ cd ..
-gwak0320@ubuntu:~/whisper/PMFS-new/workloads$ cd ..
-gwak0320@ubuntu:~/whisper/PMFS-new$ vi README.md 
-gwak0320@ubuntu:~/whisper/PMFS-new$ make menuconfig
-make: *** No rule to make target 'menuconfig'.  Stop.
-gwak0320@ubuntu:~/whisper/PMFS-new$
+gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$
 ```
 
 - run nfs-asplos.f with filebench (On Ubuntu)
