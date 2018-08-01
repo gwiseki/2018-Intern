@@ -337,24 +337,8 @@ gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$
 failed to enable tracing. err = -1
 41188:C 21 Jul 15:26:20.064 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
 41188:C 21 Jul 15:26:20.064 # Cannot int persistent memory file /dev/shm/redis.pm size 2.00G
-
-\>>> starting redis client
-
-
-\>>> ./run-redis-cli.sh --small
-
-63250 Gets/sec | Hits: 63250 (100.00%) | Misses: 0 (0.00%) 
-63250 Gets/sec | Hits: 63250 (100.00%) | Misses: 0 (0.00%)
-61000 Gets/sec | Hits: 61000 (100.00%) | Misses: 0 (0.00%)
-....(repetition)
-....
-61000 Gets/sec | Hits: 61000 (100.00%) | Misses: 0 (0.00%)
-\>>> kill -s SIGKILL `pgrep redis`
-
-sh: line 0: kill: SIGKILL: invalid signal specification
-[whisper]$
 ```
-or sometimes
+If you see this message, kill redis-server cilent. ("ps -ef" and "kill -9")
 ```
 whisper]$ ./script.py -r -z 'small' -w 'redis'
 
