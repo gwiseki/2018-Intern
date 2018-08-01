@@ -211,43 +211,7 @@ memcached: no process found
 sh: line 0: kill: SIGKILL: invalid signal specification
 [whisper]$
 ```
-## echo : executed well.
 
-It may incur error message.<br/>
-error message : Unable to allocate memory pool<br/>
-Resolve it by just using 'sudo' instruction.
-```
-[whisper]$ sudo ./script.py -r -z 'small' -w 'echo'
-
->>> ./run.sh --small
-
-got arguments: CPUS=2
-,iterations=8
-, key_size=128
-, value_size=1024
-, merge_every=8
-, put_probability=0.800000
-, update_probability=0.700000
-, num_threads=2
- operations=10000
-
-Size of PM pool:1073741824
-maximum number of keys printable is 1844674407
-KP: 2512: Using 16 for local hash table size (same as merge frequency), 10104 for master hash table size
-KP: 2512: Total memory allocation size (just evaluation, not kv stores themselves) could be up to 0 bytes (0 MB)
-Will create 120 random integers for each child thread
-Now starting evaluation for key-value store: kp_kvstore
-On 2 cores
-Running on storage platform: disk
-Starting multi-threaded tests: num_threads=2, NUM_CPUS=2
-0.200000 GETS
-no free memory of size 303360 available
-Increase the size of the PM pool:
-Increase PSEGMENT_RESERVED_REGION_SIZE in whisper/kv-echo/echo/include/pm_instr.h and rebuild echo
-Command exited with non-zero status 1
-0.62user 0.08system 0:00.72elapsed 97%CPU (0avgtext+0avgdata 1053360maxresident)k
-0inputs+0outputs (0major+16740minor)pagefaults 0swaps
-```
 ## exim, sql : error
 
 error message : please visit github.com/snalli/PMFS-new
@@ -325,6 +289,64 @@ createfile1          30404ops      253ops/s   0.0mb/s      1.7ms/op [0.01ms - 52
 122.011: IO Summary: 334216 ops 2777.607 ops/s 253/505 rd/wr  67.0mb/s  10.5ms/op
 122.011: Shutting down processes
 gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$
+```
+## echo : executed well.
+
+It may incur error message.<br/>
+```
+Unable to allocate memory pool<br/>
+```
+Resolve it by just using 'sudo' instruction.
+<br/><br/>
+```
+no free memory of size 128 available
+```
+Echo create a file in /dev/shm (zfile for nstore and efile for echo} which act as persistent memory pools. So does every application in WHISPER. The default size is 1GB. When space is low, the above error is thrown. We will make this a run time parameter in the future. For now, simply increase it by altering the PSEGMENT_RESERVED_REGION_SIZE in Nstore and Echo. You may find this variable by using grep, cscope or any indexing tool for browsing source code. Its location varies with application. Delete the old pool, recompile and re-run.
+(from READMD.md file in whisper dir)<br/><br/>
+(when executed well)↓↓↓
+```
+[whisper]$ ./script.py -r -z 'med' -w 'echo'
+
+>>> ./run.sh --med
+
+got arguments: CPUS=2
+,iterations=16
+, key_size=128
+, value_size=1024
+, merge_every=8
+, put_probability=0.800000
+, update_probability=0.700000
+, num_threads=2
+ operations=100000
+
+Size of PM pool:1073741824
+maximum number of keys printable is 1844674407
+KP: 832: Using 16 for local hash table size (same as merge frequency), 10208 for master hash table size
+KP: 832: Total memory allocation size (just evaluation, not kv stores themselves) could be up to 0 bytes (0 MB)
+Will create 240 random integers for each child thread
+Now starting evaluation for key-value store: kp_kvstore
+On 2 cores
+Running on storage platform: disk
+Starting multi-threaded tests: num_threads=2, NUM_CPUS=2
+0.200000 GETS
+KP: 832: pinned new thread to CPU=0x0
+KP: 832: pinned new thread to CPU=0x1
+KP: 1824: actually starting now
+KP: 9120: actually starting now
+For multithreaded run
+         200000 total ops (161552 puts + 38448 gets)
+         981647 in runtime (usecs) = 0.203739 ops/usec
+         168522144.000000 byte/sec put throughput (this thread)
+         40106832.000000 byte/sec get throughput (this thread)
+         208628960.000000 byte/sec total throughput (this thread)
+         Conflicts in worker thread: 0 (of 20195 commits)
+         Errors in worker thread: 0
+***END OF RAMP-UP-THREADS OUTPUT***
+
+***CONCLUDING THREAD EVALUATION***
+5.88user 4.07system 0:07.12elapsed 139%CPU (0avgtext+0avgdata 1101740maxresident)k
+0inputs+0outputs (0major+276529minor)pagefaults 0swaps
+[hk@mangalyaan whisper]$
 ```
 
 ## redis : executed.
