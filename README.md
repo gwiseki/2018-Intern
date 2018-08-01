@@ -252,7 +252,7 @@ Command exited with non-zero status 1
 
 error message : please visit github.com/snalli/PMFS-new
 
-## nfs : executed well.(imperfect - could not moust nfs)
+## nfs : executed well.(imperfect - could not mount nfs)
 
 - run fileserver-asplos.f with filebench (On Ubuntu)
 ```
