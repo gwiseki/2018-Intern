@@ -338,12 +338,17 @@ failed to enable tracing. err = -1
 41188:C 21 Jul 15:26:20.064 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
 41188:C 21 Jul 15:26:20.064 # Cannot int persistent memory file /dev/shm/redis.pm size 2.00G
 ```
-If you see this message, kill redis-server cilent process. ("ps -ef" and "kill -9")
+If you see this message, kill redis-server cilent process. ("ps -ef" and "kill -9")<br/><br/>
 ```
 40652:M 01 Aug 14:23:41.919 # Server can't set maximum open files to 10032 because of OS error: Operation not permitted.
 ```
-If you see this message, please execute in root client(sudo).
-<br/>
+If you see this message, please execute in root client(sudo).<br/><br/>
+
+```
+41840:M 01 Aug 14:40:56.656 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+```
+If you see this message, just do what they say.<br/><br/>
+
 (when executed well)↓↓↓
 ```
 [whisper]$ sudo ./script.py -r -z 'small' -w 'redis'
@@ -351,16 +356,16 @@ If you see this message, please execute in root client(sudo).
 >>> ./run-redis-server.sh
 
 tracing disabled by user.
-41840:C 01 Aug 14:40:56.644 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
-41840:C 01 Aug 14:40:56.651 * Init Persistent memory file /dev/shm/redis.pm size 2.00G time 0.007 seconds
-41840:M 01 Aug 14:40:56.652 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+42260:C 01 Aug 14:51:11.332 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
+42260:C 01 Aug 14:51:11.339 * Init Persistent memory file /dev/shm/redis.pm size 2.00G time 0.007 seconds
+42260:M 01 Aug 14:51:11.341 * Increased maximum number of open files to 10032 (it was originally set to 1024).
                 _._
            _.-``__ ''-._
       _.-``    `.  `_.  ''-._           Redis 3.1.103_NVML (4a5beee5/0) 64 bit
   .-`` .-```.  ```\/    _.,_ ''-._
  (    '      ,       .-`  | `,    )     Running in standalone mode
  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
- |    `-._   `._    /     _.-'    |     PID: 41840
+ |    `-._   `._    /     _.-'    |     PID: 42260
   `-._    `-._  `-./  _.-'    _.-'
  |`-._`-._    `-.__.-'    _.-'_.-'|
  |    `-._`-._        _.-'_.-'    |           http://redis.io
@@ -372,33 +377,36 @@ tracing disabled by user.
           `-._        _.-'
               `-.__.-'
 
-41840:M 01 Aug 14:40:56.656 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-41840:M 01 Aug 14:40:56.656 # Server started, Redis version 3.1.103_NVML
-41840:M 01 Aug 14:40:56.656 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-41840:M 01 Aug 14:40:56.656 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
-41840:M 01 Aug 14:40:56.656 * The server is now ready to accept connections on port 6379
+42260:M 01 Aug 14:51:11.342 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+42260:M 01 Aug 14:51:11.342 # Server started, Redis version 3.1.103_NVML
+42260:M 01 Aug 14:51:11.343 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+42260:M 01 Aug 14:51:11.343 * The server is now ready to accept connections on port 6379
 
 >>> starting redis client
 
-
 >>> ./run-redis-cli.sh --small
 
-63500 Gets/sec | Hits: 58748 (92.52%) | Misses: 4752 (7.48%)
-64000 Gets/sec | Hits: 63450 (99.14%) | Misses: 550 (0.86%)
-64750 Gets/sec | Hits: 64456 (99.55%) | Misses: 294 (0.45%)
-65250 Gets/sec | Hits: 65086 (99.75%) | Misses: 164 (0.25%)
-65250 Gets/sec | Hits: 65124 (99.81%) | Misses: 126 (0.19%)
-65250 Gets/sec | Hits: 65142 (99.83%) | Misses: 108 (0.17%)
+59500 Gets/sec | Hits: 54615 (91.79%) | Misses: 4885 (8.21%)
+59000 Gets/sec | Hits: 58449 (99.07%) | Misses: 551 (0.93%)
+59750 Gets/sec | Hits: 59472 (99.53%) | Misses: 278 (0.47%)
+60250 Gets/sec | Hits: 60056 (99.68%) | Misses: 194 (0.32%)
+60500 Gets/sec | Hits: 60366 (99.78%) | Misses: 134 (0.22%)
+60500 Gets/sec | Hits: 60377 (99.80%) | Misses: 123 (0.20%)
+60500 Gets/sec | Hits: 60417 (99.86%) | Misses: 83 (0.14%)
 ....(repetition)
 ....
-64500 Gets/sec | Hits: 64496 (99.99%) | Misses: 4 (0.01%)
-64500 Gets/sec | Hits: 64493 (99.99%) | Misses: 7 (0.01%)
-63750 Gets/sec | Hits: 63737 (99.98%) | Misses: 13 (0.02%)
-64250 Gets/sec | Hits: 64235 (99.98%) | Misses: 15 (0.02%)
+69000 Gets/sec | Hits: 68987 (99.98%) | Misses: 13 (0.02%)
+67750 Gets/sec | Hits: 67736 (99.98%) | Misses: 14 (0.02%)
+69000 Gets/sec | Hits: 68993 (99.99%) | Misses: 7 (0.01%)
+62750 Gets/sec | Hits: 62741 (99.99%) | Misses: 9 (0.01%)
+57750 Gets/sec | Hits: 57744 (99.99%) | Misses: 6 (0.01%)
+56750 Gets/sec | Hits: 56743 (99.99%) | Misses: 7 (0.01%)
+57000 Gets/sec | Hits: 56995 (99.99%) | Misses: 5 (0.01%)
 
 >>> kill -s SIGKILL `pgrep redis`
 
 sh: line 0: kill: SIGKILL: invalid signal specification
+[whisper]$
 ```
 There's a message that 'Cannot int persistent memory' at the beginning of the exectuion, I regarded this as the problem which happens in non-PM situation. and I searched the operation of the remaining part in operation message. the opeartion of remaining part is written in run-redis-cli.sh file.<br/>
 
