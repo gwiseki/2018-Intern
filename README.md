@@ -13,7 +13,7 @@ And on same kinds of machine, the results can be different.
 |         | ycsb(N-store) | tpcc(N-store) | echo(KVS) | redis(KVS) | C-tree | Hashmap |
 |:-------:|:-------------:|:-------------:|:---------:|:----------:|:------:|:-------:|
 | compile |       Y       |       Y       |     Y     |      Y     |    Y   |    Y    |
-| execute |   sometimes   |   sometimes   |     Y     |      Y     |    Y   |    Y    |
+| execute |       Y       |       Y       |     Y     |      Y     |    Y   |    Y    |
 |   etc   |               |               |           |            |        |         |
 
 |         | memcached(KVS) | vacation(OLTP, KVS, Mnemosyne) | nfs(PMFS)  | exim(PMFS) | sql(PMFS) |
