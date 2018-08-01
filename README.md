@@ -351,21 +351,21 @@ If you see this message, just do what they say.<br/><br/>
 
 (when executed well)↓↓↓
 ```
-[whisper]$ sudo ./script.py -r -z 'small' -w 'redis'
+[whisper]$ sudo ./script.py -r -z 'large' -w 'redis'
 
 >>> ./run-redis-server.sh
 
 tracing disabled by user.
-42260:C 01 Aug 14:51:11.332 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
-42260:C 01 Aug 14:51:11.339 * Init Persistent memory file /dev/shm/redis.pm size 2.00G time 0.007 seconds
-42260:M 01 Aug 14:51:11.341 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+42957:C 01 Aug 14:59:35.904 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
+42957:C 01 Aug 14:59:35.913 * Init Persistent memory file /dev/shm/redis.pm size 2.00G time 0.009 seconds
+42957:M 01 Aug 14:59:35.914 * Increased maximum number of open files to 10032 (it was originally set to 1024).
                 _._
            _.-``__ ''-._
       _.-``    `.  `_.  ''-._           Redis 3.1.103_NVML (4a5beee5/0) 64 bit
   .-`` .-```.  ```\/    _.,_ ''-._
  (    '      ,       .-`  | `,    )     Running in standalone mode
  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
- |    `-._   `._    /     _.-'    |     PID: 42260
+ |    `-._   `._    /     _.-'    |     PID: 42957
   `-._    `-._  `-./  _.-'    _.-'
  |`-._`-._    `-.__.-'    _.-'_.-'|
  |    `-._`-._        _.-'_.-'    |           http://redis.io
@@ -377,31 +377,51 @@ tracing disabled by user.
           `-._        _.-'
               `-.__.-'
 
-42260:M 01 Aug 14:51:11.342 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-42260:M 01 Aug 14:51:11.342 # Server started, Redis version 3.1.103_NVML
-42260:M 01 Aug 14:51:11.343 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
-42260:M 01 Aug 14:51:11.343 * The server is now ready to accept connections on port 6379
+42957:M 01 Aug 14:59:35.917 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+42957:M 01 Aug 14:59:35.917 # Server started, Redis version 3.1.103_NVML
+42957:M 01 Aug 14:59:35.918 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+42957:M 01 Aug 14:59:35.918 * The server is now ready to accept connections on port 6379
 
 >>> starting redis client
 
->>> ./run-redis-cli.sh --small
 
-59500 Gets/sec | Hits: 54615 (91.79%) | Misses: 4885 (8.21%)
-59000 Gets/sec | Hits: 58449 (99.07%) | Misses: 551 (0.93%)
-59750 Gets/sec | Hits: 59472 (99.53%) | Misses: 278 (0.47%)
-60250 Gets/sec | Hits: 60056 (99.68%) | Misses: 194 (0.32%)
-60500 Gets/sec | Hits: 60366 (99.78%) | Misses: 134 (0.22%)
-60500 Gets/sec | Hits: 60377 (99.80%) | Misses: 123 (0.20%)
-60500 Gets/sec | Hits: 60417 (99.86%) | Misses: 83 (0.14%)
+>>> ./run-redis-cli.sh --large
+
+58750 Gets/sec | Hits: 6115 (10.41%) | Misses: 52635 (89.59%)
+59750 Gets/sec | Hits: 16544 (27.69%) | Misses: 43206 (72.31%)
+61750 Gets/sec | Hits: 25550 (41.38%) | Misses: 36200 (58.62%)
+61000 Gets/sec | Hits: 31385 (51.45%) | Misses: 29615 (48.55%)
+64000 Gets/sec | Hits: 38089 (59.51%) | Misses: 25911 (40.49%)
+64500 Gets/sec | Hits: 42414 (65.76%) | Misses: 22086 (34.24%)
+65000 Gets/sec | Hits: 46416 (71.41%) | Misses: 18584 (28.59%)
+65250 Gets/sec | Hits: 48947 (75.01%) | Misses: 16303 (24.99%)
+65250 Gets/sec | Hits: 50928 (78.05%) | Misses: 14322 (21.95%)
+59750 Gets/sec | Hits: 48142 (80.57%) | Misses: 11608 (19.43%)
+66000 Gets/sec | Hits: 54528 (82.62%) | Misses: 11472 (17.38%)
+64500 Gets/sec | Hits: 54341 (84.25%) | Misses: 10159 (15.75%)
+54000 Gets/sec | Hits: 46139 (85.44%) | Misses: 7861 (14.56%)
+54000 Gets/sec | Hits: 46695 (86.47%) | Misses: 7305 (13.53%)
+55000 Gets/sec | Hits: 48219 (87.67%) | Misses: 6781 (12.33%)
+54500 Gets/sec | Hits: 48223 (88.48%) | Misses: 6277 (11.52%)
+54500 Gets/sec | Hits: 48612 (89.20%) | Misses: 5888 (10.80%)
+55000 Gets/sec | Hits: 49399 (89.82%) | Misses: 5601 (10.18%)
+54750 Gets/sec | Hits: 49434 (90.29%) | Misses: 5316 (9.71%)
 ....(repetition)
 ....
-69000 Gets/sec | Hits: 68987 (99.98%) | Misses: 13 (0.02%)
-67750 Gets/sec | Hits: 67736 (99.98%) | Misses: 14 (0.02%)
-69000 Gets/sec | Hits: 68993 (99.99%) | Misses: 7 (0.01%)
-62750 Gets/sec | Hits: 62741 (99.99%) | Misses: 9 (0.01%)
-57750 Gets/sec | Hits: 57744 (99.99%) | Misses: 6 (0.01%)
-56750 Gets/sec | Hits: 56743 (99.99%) | Misses: 7 (0.01%)
-57000 Gets/sec | Hits: 56995 (99.99%) | Misses: 5 (0.01%)
+55250 Gets/sec | Hits: 53272 (96.42%) | Misses: 1978 (3.58%)
+55250 Gets/sec | Hits: 53376 (96.61%) | Misses: 1874 (3.39%)
+54000 Gets/sec | Hits: 52235 (96.73%) | Misses: 1765 (3.27%)
+54750 Gets/sec | Hits: 52924 (96.66%) | Misses: 1826 (3.34%)
+55250 Gets/sec | Hits: 53430 (96.71%) | Misses: 1820 (3.29%)
+55250 Gets/sec | Hits: 53375 (96.61%) | Misses: 1875 (3.39%)
+54000 Gets/sec | Hits: 52337 (96.92%) | Misses: 1663 (3.08%)
+55000 Gets/sec | Hits: 53369 (97.03%) | Misses: 1631 (2.97%)
+55000 Gets/sec | Hits: 53403 (97.10%) | Misses: 1597 (2.90%)
+55000 Gets/sec | Hits: 53414 (97.12%) | Misses: 1586 (2.88%)
+54000 Gets/sec | Hits: 52431 (97.09%) | Misses: 1569 (2.91%)
+55000 Gets/sec | Hits: 53489 (97.25%) | Misses: 1511 (2.75%)
+55250 Gets/sec | Hits: 53753 (97.29%) | Misses: 1497 (2.71%)
+55000 Gets/sec | Hits: 53510 (97.29%) | Misses: 1490 (2.71%)
 
 >>> kill -s SIGKILL `pgrep redis`
 
