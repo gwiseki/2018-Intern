@@ -252,7 +252,7 @@ Command exited with non-zero status 1
 
 error message : please visit github.com/snalli/PMFS-new
 
-## nfs : executed well.(imperfect - could not mount nfs)
+## nfs : executed.(imperfect - could not mount nfs)
 
 - run fileserver-asplos.f with filebench (On Ubuntu)
 ```
@@ -421,7 +421,7 @@ If you have anything not understood, please ask to gwak0320@gmail.com.
 
 -- What I will do for next two weeks
 - The things which are ongoing on last week
-- Execute applications in Whisper on 3DXpoint and analyze the result
+- Execute applications in Whisper on memory X and analyze the result
 --------------------------------------------------------------
 -- What I did last week (07.30.18)
 - (Ongoing) Build and Execute applications in Whisper benchmark suite and benchIT benchmark
@@ -429,4 +429,4 @@ If you have anything not understood, please ask to gwak0320@gmail.com.
 
 -- What I will do for next two weeks
 - The things which were ongoing on last week
-- Execute applications in Whisper on 3DXpoint and analyze the result
+- Execute applications in Whisper on memory X and analyze the result
