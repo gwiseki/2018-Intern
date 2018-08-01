@@ -13,7 +13,7 @@ And on same kinds of machine, the results can be different.
 |         | ycsb(N-store) | tpcc(N-store) | echo(KVS) | redis(KVS) | C-tree | Hashmap |
 |:-------:|:-------------:|:-------------:|:---------:|:----------:|:------:|:-------:|
 | compile |       Y       |       Y       |     Y     |      Y     |    Y   |    Y    |
-| execute |sometimes      |    sometimes  |     Y     |      Y     |    Y   |    Y    |
+| execute |       Y       |       Y       |     Y     |      Y     |    Y   |    Y    |
 |   etc   |               |               |           |            |        |         |
 
 |         | memcached(KVS) | vacation(OLTP, KVS, Mnemosyne) | nfs(PMFS)  | exim(PMFS) | sql(PMFS) |
@@ -83,13 +83,7 @@ Use another program (do not need compile)
 ## ctree, hashmap : completed
 
 # 3. Run whisper applications
-## ycsb : error.
-error message :
-```
-./run.sh: line 50:  5040 Aborted                 (core dumped) $sudo $time $bin -x1000 -k10000 -w -p0.5 -e2 $trace $var
-```
-Actually, It was able to execute at first time, but after some times of execution, now it can't be executed.<br/>
-(when executed)↓↓↓
+## ycsb : executed well.
 ```
 [whisper]$ ./script.py -r -z 'small' -w 'ycsb'
 
@@ -123,14 +117,15 @@ max dur :7.06
 OPT_WAL :: Duration(s) : 0.01 Throughput  : 141643.06
 TOTAL EPOCHS : 0
 ```
-## tpcc : error.
+When error :
+```
+./run.sh: line 50:  5040 Aborted                 (core dumped) $sudo $time $bin -x1000 -k10000 -w -p0.5 -e2 $trace $var
+```
+If you see this message, "Nstore(actually ycsb, tpcc) create a file in /dev/shm (zfile for nstore and efile} which act as persistent memory pools. So does every application in WHISPER. The default size is 1GB. When space is low, the above error is thrown. We will make this a run time parameter in the future. For now, simply increase it by altering the PSEGMENT_RESERVED_REGION_SIZE in Nstore and Echo. You may find this variable by using grep, cscope or any indexing tool for browsing source code. Its location varies with application. Delete the old pool, recompile and re-run.(from READMD.md file in whisper dir)"
+<br/><br/>
 
-error message : <br/>
-```
-./run.sh: line 50: 15295 Segmentation fault      (core dumped) $sudo $time $bin -x10000 -k1000 -w -p0.2 -e2 $trace $var
-```
-Actually, It was able to execute at first time, but after some times of execution, now it can't be executed.<br/>
-(when executed)↓↓↓
+
+## tpcc : executed well.
 ```
 [whisper]$ ./script.py -r -z 'small' -w 'tpcc'
 
@@ -152,11 +147,16 @@ max dur :1269.33
 OPT_WAL :: Duration(s) : 1.27 Throughput  : 7878.15
 [whisper]$
 ```
+When error :
+```
+./run.sh: line 50: 15295 Segmentation fault      (core dumped) $sudo $time $bin -x10000 -k1000 -w -p0.2 -e2 $trace $var
+```
+If you see this message, "Nstore(actually ycsb, tpcc) create a file in /dev/shm (zfile for nstore and efile} which act as persistent memory pools. So does every application in WHISPER. The default size is 1GB. When space is low, the above error is thrown. We will make this a run time parameter in the future. For now, simply increase it by altering the PSEGMENT_RESERVED_REGION_SIZE in Nstore and Echo. You may find this variable by using grep, cscope or any indexing tool for browsing source code. Its location varies with application. Delete the old pool, recompile and re-run.(from READMD.md file in whisper dir)"
+<br/><br/>
+
 
 ## ctree : executed well.
-It may incur error message.<br/>
-error message : removing file failed: Operation not permitted <br/>
-Resolve it by just using 'sudo' instruction.
+
 ```
 [whisper]$ sudo ./script.py -r -z 'small' -w 'ctree'
 
@@ -170,10 +170,10 @@ total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-
 TOTAL EPOCH COUNT : 0, RUNTIME : 1507338 us
 exiting main.
 ```
-## hashmap : executed well.
-It may incur error message.<br/>
+When error : <br/>
 error message : removing file failed: Operation not permitted <br/>
 Resolve it by just using 'sudo' instruction.
+## hashmap : executed well.
 ```
 [whisper]$ sudo ./script.py -r -z 'small' -w 'hashmap'
 
@@ -187,6 +187,9 @@ total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-
 TOTAL EPOCH COUNT : 0, RUNTIME : 1472571 us
 exiting main.
 ```
+When error : <br/>
+error message : removing file failed: Operation not permitted <br/>
+Resolve it by just using 'sudo' instruction.
 ## memcached : error
 ```
 [whisper]$ ./script.py -r -z 'small' -w 'memcached'
@@ -291,18 +294,6 @@ createfile1          30404ops      253ops/s   0.0mb/s      1.7ms/op [0.01ms - 52
 gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$
 ```
 ## echo : executed well.
-
-```
-Unable to allocate memory pool<br/>
-```
-If you see this message, Resolve it by just using 'sudo' instruction.
-<br/><br/>
-```
-no free memory of size 128 available
-```
-If you see this message, "Echo create a file in /dev/shm (zfile for nstore and efile for echo} which act as persistent memory pools. So does every application in WHISPER. The default size is 1GB. When space is low, the above error is thrown. We will make this a run time parameter in the future. For now, simply increase it by altering the PSEGMENT_RESERVED_REGION_SIZE in Nstore and Echo. You may find this variable by using grep, cscope or any indexing tool for browsing source code. Its location varies with application. Delete the old pool, recompile and re-run.(from READMD.md file in whisper dir)"
-<br/><br/>
-(when executed well)↓↓↓
 ```
 [whisper]$ ./script.py -r -z 'med' -w 'echo'
 
@@ -347,30 +338,18 @@ For multithreaded run
 0inputs+0outputs (0major+276529minor)pagefaults 0swaps
 [hk@mangalyaan whisper]$
 ```
-
+When Error :
+```
+Unable to allocate memory pool<br/>
+```
+If you see this message, Resolve it by just using 'sudo' instruction.
+<br/><br/>
+```
+no free memory of size 128 available
+```
+If you see this message, "Echo create a file in /dev/shm (zfile for nstore and efile for echo} which act as persistent memory pools. So does every application in WHISPER. The default size is 1GB. When space is low, the above error is thrown. We will make this a run time parameter in the future. For now, simply increase it by altering the PSEGMENT_RESERVED_REGION_SIZE in Nstore and Echo. You may find this variable by using grep, cscope or any indexing tool for browsing source code. Its location varies with application. Delete the old pool, recompile and re-run.(from READMD.md file in whisper dir)"
+<br/><br/>
 ## redis : executed.
-
-----------------------------------------------------------
-[whisper]$ ./script.py -r -z 'small' -w 'redis'
-```
-\>>> ./run-redis-server.sh
-
-failed to enable tracing. err = -1
-41188:C 21 Jul 15:26:20.064 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
-41188:C 21 Jul 15:26:20.064 # Cannot int persistent memory file /dev/shm/redis.pm size 2.00G
-```
-If you see this message, kill redis-server cilent process. ("ps -ef" and "kill -9")<br/><br/>
-```
-40652:M 01 Aug 14:23:41.919 # Server can't set maximum open files to 10032 because of OS error: Operation not permitted.
-```
-If you see this message, please execute in root client(sudo).<br/><br/>
-
-```
-41840:M 01 Aug 14:40:56.656 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-```
-If you see this message, just do what they say.<br/><br/>
-
-(when executed well)↓↓↓
 ```
 [whisper]$ sudo ./script.py -r -z 'large' -w 'redis'
 
@@ -449,8 +428,30 @@ tracing disabled by user.
 sh: line 0: kill: SIGKILL: invalid signal specification
 [whisper]$
 ```
+Simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. That function has so many inner user-defined functions, so it is difficult to analyze. But simply it performs cycles of 1 second with 50% writes and 50% reads. I will keep analyzing it. <br/><br/>
+When error :
+```
+[whisper]$ ./script.py -r -z 'small' -w 'redis'
 
-the remaining part is simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. That function has so many inner user-defined functions, so it is difficult to analyze. But simply it performs cycles of 1 second with 50% writes and 50% reads. I will keep analyzing it.
+\>>> ./run-redis-server.sh
+
+failed to enable tracing. err = -1
+41188:C 21 Jul 15:26:20.064 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
+41188:C 21 Jul 15:26:20.064 # Cannot int persistent memory file /dev/shm/redis.pm size 2.00G
+```
+If you see this message, kill redis-server cilent process. ("ps -ef" and "kill -9")<br/><br/>
+```
+40652:M 01 Aug 14:23:41.919 # Server can't set maximum open files to 10032 because of OS error: Operation not permitted.
+```
+If you see this message, please execute in root client(sudo).<br/><br/>
+
+```
+41840:M 01 Aug 14:40:56.656 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+```
+If you see this message, just do what they say.<br/><br/>
+
+
+
 
 ------------------------------------------------------------
 If you have anything not understood, please ask to gwak0320@gmail.com.
