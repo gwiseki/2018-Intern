@@ -339,24 +339,27 @@ failed to enable tracing. err = -1
 41188:C 21 Jul 15:26:20.064 # Cannot int persistent memory file /dev/shm/redis.pm size 2.00G
 ```
 If you see this message, kill redis-server cilent. ("ps -ef" and "kill -9")
+
 ```
-whisper]$ ./script.py -r -z 'small' -w 'redis'
+40652:M 01 Aug 14:23:41.919 # Server can't set maximum open files to 10032 because of OS error: Operation not permitted.
+```
+If you see this message, please execute in root client(sudo).
+
+whisper]$ sudo ./script.py -r -z 'small' -w 'redis'
 
 >>> ./run-redis-server.sh
 
-failed to enable tracing. err = -1
-40652:C 01 Aug 14:23:41.694 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
-40652:C 01 Aug 14:23:41.918 * Init Persistent memory file /dev/shm/redis.pm size 2.00G time 0.224 seconds
-40652:M 01 Aug 14:23:41.919 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
-40652:M 01 Aug 14:23:41.919 # Server can't set maximum open files to 10032 because of OS error: Operation not permitted.
-40652:M 01 Aug 14:23:41.919 # Current maximum open files is 4096. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+tracing disabled by user.
+41840:C 01 Aug 14:40:56.644 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
+41840:C 01 Aug 14:40:56.651 * Init Persistent memory file /dev/shm/redis.pm size 2.00G time 0.007 seconds
+41840:M 01 Aug 14:40:56.652 * Increased maximum number of open files to 10032 (it was originally set to 1024).
                 _._
            _.-``__ ''-._
       _.-``    `.  `_.  ''-._           Redis 3.1.103_NVML (4a5beee5/0) 64 bit
   .-`` .-```.  ```\/    _.,_ ''-._
  (    '      ,       .-`  | `,    )     Running in standalone mode
  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
- |    `-._   `._    /     _.-'    |     PID: 40652
+ |    `-._   `._    /     _.-'    |     PID: 41840
   `-._    `-._  `-./  _.-'    _.-'
  |`-._`-._    `-.__.-'    _.-'_.-'|
  |    `-._`-._        _.-'_.-'    |           http://redis.io
@@ -368,23 +371,23 @@ failed to enable tracing. err = -1
           `-._        _.-'
               `-.__.-'
 
-40652:M 01 Aug 14:23:41.921 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-40652:M 01 Aug 14:23:41.921 # Server started, Redis version 3.1.103_NVML
-40652:M 01 Aug 14:23:41.921 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-40652:M 01 Aug 14:23:41.921 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
-40652:M 01 Aug 14:23:41.921 * The server is now ready to accept connections on port 6379
+41840:M 01 Aug 14:40:56.656 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+41840:M 01 Aug 14:40:56.656 # Server started, Redis version 3.1.103_NVML
+41840:M 01 Aug 14:40:56.656 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+41840:M 01 Aug 14:40:56.656 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+41840:M 01 Aug 14:40:56.656 * The server is now ready to accept connections on port 6379
 
 >>> starting redis client
 
 
 >>> ./run-redis-cli.sh --small
 
-67500 Gets/sec | Hits: 62611 (92.76%) | Misses: 4889 (7.24%)
-64000 Gets/sec | Hits: 63487 (99.20%) | Misses: 513 (0.80%)
-64250 Gets/sec | Hits: 63960 (99.55%) | Misses: 290 (0.45%)
-64500 Gets/sec | Hits: 64308 (99.70%) | Misses: 192 (0.30%)
-64250 Gets/sec | Hits: 64111 (99.78%) | Misses: 139 (0.22%)
-64250 Gets/sec | Hits: 64149 (99.84%) | Misses: 101 (0.16%)
+63500 Gets/sec | Hits: 58748 (92.52%) | Misses: 4752 (7.48%)
+64000 Gets/sec | Hits: 63450 (99.14%) | Misses: 550 (0.86%)
+64750 Gets/sec | Hits: 64456 (99.55%) | Misses: 294 (0.45%)
+65250 Gets/sec | Hits: 65086 (99.75%) | Misses: 164 (0.25%)
+65250 Gets/sec | Hits: 65124 (99.81%) | Misses: 126 (0.19%)
+65250 Gets/sec | Hits: 65142 (99.83%) | Misses: 108 (0.17%)
 ....(repetition)
 ....
 64500 Gets/sec | Hits: 64496 (99.99%) | Misses: 4 (0.01%)
