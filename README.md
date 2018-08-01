@@ -336,7 +336,7 @@ For multithreaded run
 ***CONCLUDING THREAD EVALUATION***
 5.88user 4.07system 0:07.12elapsed 139%CPU (0avgtext+0avgdata 1101740maxresident)k
 0inputs+0outputs (0major+276529minor)pagefaults 0swaps
-[hk@mangalyaan whisper]$
+[whisper]$
 ```
 When Error :
 ```
