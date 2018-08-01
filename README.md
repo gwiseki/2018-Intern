@@ -338,14 +338,15 @@ failed to enable tracing. err = -1
 41188:C 21 Jul 15:26:20.064 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
 41188:C 21 Jul 15:26:20.064 # Cannot int persistent memory file /dev/shm/redis.pm size 2.00G
 ```
-If you see this message, kill redis-server cilent. ("ps -ef" and "kill -9")
-
+If you see this message, kill redis-server cilent process. ("ps -ef" and "kill -9")
 ```
 40652:M 01 Aug 14:23:41.919 # Server can't set maximum open files to 10032 because of OS error: Operation not permitted.
 ```
 If you see this message, please execute in root client(sudo).
 
-whisper]$ sudo ./script.py -r -z 'small' -w 'redis'
+
+```
+[whisper]$ sudo ./script.py -r -z 'small' -w 'redis'
 
 >>> ./run-redis-server.sh
 
