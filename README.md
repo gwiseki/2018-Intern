@@ -354,6 +354,60 @@ failed to enable tracing. err = -1
 sh: line 0: kill: SIGKILL: invalid signal specification
 [whisper]$
 ```
+or sometimes
+```
+whisper]$ ./script.py -r -z 'small' -w 'redis'
+
+>>> ./run-redis-server.sh
+
+failed to enable tracing. err = -1
+40652:C 01 Aug 14:23:41.694 * Start init Persistent memory file /dev/shm/redis.pm size 2.00G
+40652:C 01 Aug 14:23:41.918 * Init Persistent memory file /dev/shm/redis.pm size 2.00G time 0.224 seconds
+40652:M 01 Aug 14:23:41.919 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+40652:M 01 Aug 14:23:41.919 # Server can't set maximum open files to 10032 because of OS error: Operation not permitted.
+40652:M 01 Aug 14:23:41.919 # Current maximum open files is 4096. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+                _._
+           _.-``__ ''-._
+      _.-``    `.  `_.  ''-._           Redis 3.1.103_NVML (4a5beee5/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 40652
+  `-._    `-._  `-./  _.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |           http://redis.io
+  `-._    `-._`-.__.-'_.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |
+  `-._    `-._`-.__.-'_.-'    _.-'
+      `-._    `-.__.-'    _.-'
+          `-._        _.-'
+              `-.__.-'
+
+40652:M 01 Aug 14:23:41.921 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+40652:M 01 Aug 14:23:41.921 # Server started, Redis version 3.1.103_NVML
+40652:M 01 Aug 14:23:41.921 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+40652:M 01 Aug 14:23:41.921 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+40652:M 01 Aug 14:23:41.921 * The server is now ready to accept connections on port 6379
+
+>>> starting redis client
+
+
+>>> ./run-redis-cli.sh --small
+
+67500 Gets/sec | Hits: 62611 (92.76%) | Misses: 4889 (7.24%)
+64000 Gets/sec | Hits: 63487 (99.20%) | Misses: 513 (0.80%)
+64250 Gets/sec | Hits: 63960 (99.55%) | Misses: 290 (0.45%)
+64500 Gets/sec | Hits: 64308 (99.70%) | Misses: 192 (0.30%)
+64250 Gets/sec | Hits: 64111 (99.78%) | Misses: 139 (0.22%)
+64250 Gets/sec | Hits: 64149 (99.84%) | Misses: 101 (0.16%)
+....(repetition)
+....
+64500 Gets/sec | Hits: 64496 (99.99%) | Misses: 4 (0.01%)
+64500 Gets/sec | Hits: 64493 (99.99%) | Misses: 7 (0.01%)
+63750 Gets/sec | Hits: 63737 (99.98%) | Misses: 13 (0.02%)
+64250 Gets/sec | Hits: 64235 (99.98%) | Misses: 15 (0.02%)
+```
 There's a message that 'Cannot int persistent memory' at the beginning of the exectuion, I regarded this as the problem which happens in non-PM situation. and I searched the operation of the remaining part in operation message. the opeartion of remaining part is written in run-redis-cli.sh file.<br/>
 
 the remaining part is simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. That function has so many inner user-defined functions, so it is difficult to analyze. But simply it performs cycles of 1 second with 50% writes and 50% reads. I will keep analyzing it.
