@@ -292,17 +292,16 @@ gwak0320@ubuntu:~/whisper/PMFS-new/workloads/filsrv$
 ```
 ## echo : executed well.
 
-It may incur error message.<br/>
 ```
 Unable to allocate memory pool<br/>
 ```
-Resolve it by just using 'sudo' instruction.
+If you see this message, Resolve it by just using 'sudo' instruction.
 <br/><br/>
 ```
 no free memory of size 128 available
 ```
-Echo create a file in /dev/shm (zfile for nstore and efile for echo} which act as persistent memory pools. So does every application in WHISPER. The default size is 1GB. When space is low, the above error is thrown. We will make this a run time parameter in the future. For now, simply increase it by altering the PSEGMENT_RESERVED_REGION_SIZE in Nstore and Echo. You may find this variable by using grep, cscope or any indexing tool for browsing source code. Its location varies with application. Delete the old pool, recompile and re-run.
-(from READMD.md file in whisper dir)<br/><br/>
+If you see this message, "Echo create a file in /dev/shm (zfile for nstore and efile for echo} which act as persistent memory pools. So does every application in WHISPER. The default size is 1GB. When space is low, the above error is thrown. We will make this a run time parameter in the future. For now, simply increase it by altering the PSEGMENT_RESERVED_REGION_SIZE in Nstore and Echo. You may find this variable by using grep, cscope or any indexing tool for browsing source code. Its location varies with application. Delete the old pool, recompile and re-run.(from READMD.md file in whisper dir)"
+<br/><br/>
 (when executed well)↓↓↓
 ```
 [whisper]$ ./script.py -r -z 'med' -w 'echo'
