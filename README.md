@@ -407,6 +407,10 @@ failed to enable tracing. err = -1
 64500 Gets/sec | Hits: 64493 (99.99%) | Misses: 7 (0.01%)
 63750 Gets/sec | Hits: 63737 (99.98%) | Misses: 13 (0.02%)
 64250 Gets/sec | Hits: 64235 (99.98%) | Misses: 15 (0.02%)
+
+>>> kill -s SIGKILL `pgrep redis`
+
+sh: line 0: kill: SIGKILL: invalid signal specification
 ```
 There's a message that 'Cannot int persistent memory' at the beginning of the exectuion, I regarded this as the problem which happens in non-PM situation. and I searched the operation of the remaining part in operation message. the opeartion of remaining part is written in run-redis-cli.sh file.<br/>
 
