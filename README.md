@@ -123,7 +123,7 @@ When error :
 ```
 If you see this message, "Nstore(actually ycsb, tpcc) create a file in /dev/shm (zfile for nstore and efile} which act as persistent memory pools. So does every application in WHISPER. The default size is 1GB. When space is low, the above error is thrown. We will make this a run time parameter in the future. For now, simply increase it by altering the PSEGMENT_RESERVED_REGION_SIZE in Nstore and Echo. You may find this variable by using grep, cscope or any indexing tool for browsing source code. Its location varies with application. Delete the old pool, recompile and re-run.(from READMD.md file in whisper dir)"
 <br/><br/>
-
+Result analysis : <In whisper/nstore/main.cpp> first 6 lines are the input by shell script(run.sh).
 
 ## tpcc : executed well.
 ```
