@@ -82,6 +82,11 @@ Use another program (do not need compile)
 
 ## ctree, hashmap : completed
 
+
+
+
+
+
 # 3. Run whisper applications
 ## ycsb : executed well.
 ```
@@ -117,13 +122,15 @@ max dur :7.06
 OPT_WAL :: Duration(s) : 0.01 Throughput  : 141643.06
 TOTAL EPOCHS : 0
 ```
-When error :
+### When error :
 ```
 ./run.sh: line 50:  5040 Aborted                 (core dumped) $sudo $time $bin -x1000 -k10000 -w -p0.5 -e2 $trace $var
 ```
 If you see this message, "Nstore(actually ycsb, tpcc) create a file in /dev/shm (zfile for nstore and efile} which act as persistent memory pools. So does every application in WHISPER. The default size is 1GB. When space is low, the above error is thrown. We will make this a run time parameter in the future. For now, simply increase it by altering the PSEGMENT_RESERVED_REGION_SIZE in Nstore and Echo. You may find this variable by using grep, cscope or any indexing tool for browsing source code. Its location varies with application. Delete the old pool, recompile and re-run.(from READMD.md file in whisper dir)"
 <br/><br/>
-Result analysis : First 6 lines are the input by shell script. # of txns, # of keys, OPTWAL engine, per writes, # of executors. You can change these inputs in the run.sh script. <br/>
+
+### Result analysis : 
+First 6 lines are the input by shell script. # of txns, # of keys, OPTWAL engine, per writes, # of executors. You can change these inputs in the run.sh script. <br/>
 The next values of # of txns and # of keys are result of # of txns and # of keys devided by executors. <br/>
 The value of durations are the period of each execution(mili sec). If the executor is 4, there will be four duration values. (written by work 0, work 1, work 2, ... and so forth) <br/>
 Print maximum values of durations(sec) and throughput(# of txns / max of duration). <br/>
