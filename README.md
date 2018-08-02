@@ -158,7 +158,7 @@ max dur :1269.33
 OPT_WAL :: Duration(s) : 1.27 Throughput  : 7878.15
 [whisper]$
 ```
-When error :
+### When error :
 ```
 ./run.sh: line 50: 15295 Segmentation fault      (core dumped) $sudo $time $bin -x10000 -k1000 -w -p0.2 -e2 $trace $var
 ```
@@ -181,7 +181,7 @@ total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-
 TOTAL EPOCH COUNT : 0, RUNTIME : 1507338 us
 exiting main.
 ```
-When error : <br/>
+### When error : <br/>
 error message : removing file failed: Operation not permitted <br/>
 Resolve it by just using 'sudo' instruction.
 ## hashmap : executed well.
@@ -198,7 +198,7 @@ total-avg;ops-per-second;total-max;total-min;total-median;total-std-dev;latency-
 TOTAL EPOCH COUNT : 0, RUNTIME : 1472571 us
 exiting main.
 ```
-When error : <br/>
+### When error : <br/>
 error message : removing file failed: Operation not permitted <br/>
 Resolve it by just using 'sudo' instruction.
 ## memcached : error
@@ -349,7 +349,7 @@ For multithreaded run
 0inputs+0outputs (0major+276529minor)pagefaults 0swaps
 [whisper]$
 ```
-When Error :
+### When Error :
 ```
 Unable to allocate memory pool<br/>
 ```
@@ -440,7 +440,7 @@ sh: line 0: kill: SIGKILL: invalid signal specification
 [whisper]$
 ```
 Simulating a cache workload with an 80-20 distribution(--lru-test option). The detailed opeation is the function 'LRUTestMode' in redis-cli.c. That function has so many inner user-defined functions, so it is difficult to analyze. But simply it performs cycles of 1 second with 50% writes and 50% reads. I will keep analyzing it. <br/><br/>
-When error :
+### When error :
 ```
 [whisper]$ ./script.py -r -z 'small' -w 'redis'
 
